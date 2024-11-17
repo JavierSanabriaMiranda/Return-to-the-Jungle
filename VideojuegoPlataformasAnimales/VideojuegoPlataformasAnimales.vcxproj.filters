@@ -13,15 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\layers">
+      <UniqueIdentifier>{d06e9bf1-9aa4-4d0f-9a47-7a82ef44210d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\layers">
+      <UniqueIdentifier>{9a23b545-3e27-413e-b806-dc4fe20463c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\actores">
+      <UniqueIdentifier>{5d1e94bf-c771-45d7-af5c-50ca4a31b813}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores">
+      <UniqueIdentifier>{3b2d0061-105a-4f7e-a741-325705fbf433}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLayer.h">
+      <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuLayer.h">
+      <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Archivos de encabezado\actores</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Archivos de encabezado\actores</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Layer.cpp">
+      <Filter>Archivos de origen\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLayer.cpp">
+      <Filter>Archivos de origen\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuLayer.cpp">
+      <Filter>Archivos de origen\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Archivos de origen\actores</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
