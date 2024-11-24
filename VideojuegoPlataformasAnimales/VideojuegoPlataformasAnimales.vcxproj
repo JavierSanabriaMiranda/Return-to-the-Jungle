@@ -208,6 +208,7 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MenuLayer.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Tucan.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -219,6 +220,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuLayer.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Tucan.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

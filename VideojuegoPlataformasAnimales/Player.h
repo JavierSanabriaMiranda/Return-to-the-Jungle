@@ -8,7 +8,7 @@ class Player : public Actor
 public:
 	Player(float x, float y, Game* game);
 	void update();
-	void jump();
+	void virtual jump();
 	void moveX(float axis);
 	void moveY(float axis);
 	void draw(float scrollX = 0) override; // Va a sobrescribir

@@ -26,7 +26,6 @@ Game::Game() {
 	loop();
 }
 
-
 void Game::loop() {
 	int initTick; // ms de inicio loop
 	int endTick; // ms de fin de loop

@@ -25,6 +25,12 @@
     <Filter Include="Archivos de origen\actores">
       <UniqueIdentifier>{3b2d0061-105a-4f7e-a741-325705fbf433}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\actores\personajes">
+      <UniqueIdentifier>{1e1931cc-8543-4016-bae5-d433632f4e28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores\personajes">
+      <UniqueIdentifier>{28cbaf3b-0115-4c8a-bcd0-58e037fbdb2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -45,11 +51,14 @@
     <ClInclude Include="Background.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="Tucan.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -74,11 +83,14 @@
     <ClCompile Include="Background.cpp">
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Archivos de origen\layers</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Tucan.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
