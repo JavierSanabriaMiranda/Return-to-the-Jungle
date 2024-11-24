@@ -11,14 +11,13 @@ Player::Player(string img ,float x, float y, int width, int height, Game* game)
 	state = game->stateMoving;
 
 	aJumpingRight = new Animation("res/Tucan_saltando_derecha.png",
-		width, height, 320, 40, 6, 8, true, game);
+		width, height, 560, 43, 6, 8, true, game);
 	aJumpingLeft = new Animation("res/Tucan_saltando_izquierda.png",
-		width, height, 320, 40, 6, 8, true, game);
+		width, height, 560, 43, 6, 8, true, game);
 	aRunningRight = new Animation("res/Tucan_andando_derecha.png", width, height,
-		240, 40, 6, 6, true, game);
+		420, 41, 6, 6, true, game);
 	aRunningLeft = new Animation("res/Tucan_andando_izquierda.png", width, height,
-		240, 40, 6, 6, true, game);
-
+		420, 41, 6, 6, true, game);
 
 	animation = aRunningRight;
 }

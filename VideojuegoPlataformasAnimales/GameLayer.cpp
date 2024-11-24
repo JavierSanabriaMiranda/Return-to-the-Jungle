@@ -67,7 +67,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = new Player("res/Tucan.png", x, y, 40, 40,game);
+		player = new Player("res/Tucan.png", x, y, 60, 40,game);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
