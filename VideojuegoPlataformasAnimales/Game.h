@@ -53,7 +53,4 @@ public:
 	int const inputGamePad = 3;
 
 };
-#include "Game.h"
-#undef main  //esto es para quitar el main que hay en la Librería SDL_main
-
 
