@@ -6,7 +6,7 @@ CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLaye
 	: Layer(game) {
 	init();
 	gamePad = SDL_GameControllerOpen(0);
-	gameLayer = gameLayer;
+	currentGameLayer = gameLayer;
 }
 
 void CharacterSelectionLayer::init() {
@@ -152,7 +152,7 @@ void CharacterSelectionLayer::gamePadToControls(SDL_Event event) {
 
 void CharacterSelectionLayer::selectTucan() {
 	if (selectedTucan == false) {
-		gameLayer->addCharacter(new Tucan(0, 0, game));
+		currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedTucan = true;
 		if (charactersSelected == 3) {
@@ -164,7 +164,7 @@ void CharacterSelectionLayer::selectTucan() {
 
 void CharacterSelectionLayer::selectElefante() {
 	if (selectedElefante == false) {
-		//gameLayer->addCharacter(new Tucan(0, 0, game));
+		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedElefante = true;
 		if (charactersSelected == 3) {
@@ -176,7 +176,7 @@ void CharacterSelectionLayer::selectElefante() {
 
 void CharacterSelectionLayer::selectSerpiente() {
 	if (selectedSerpiente == false) {
-		//gameLayer->addCharacter(new Tucan(0, 0, game));
+		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedSerpiente = true;
 		if (charactersSelected == 3) {
@@ -188,7 +188,7 @@ void CharacterSelectionLayer::selectSerpiente() {
 
 void CharacterSelectionLayer::selectCapibara() {
 	if (selectedCapibara == false) {
-		//gameLayer->addCharacter(new Tucan(0, 0, game));
+		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedCapibara = true;
 		if (charactersSelected == 3) {
@@ -200,7 +200,7 @@ void CharacterSelectionLayer::selectCapibara() {
 
 void CharacterSelectionLayer::selectMono() {
 	if (selectedMono == false) {
-		//gameLayer->addCharacter(new Tucan(0, 0, game));
+		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedMono = true;
 		if (charactersSelected == 3) {

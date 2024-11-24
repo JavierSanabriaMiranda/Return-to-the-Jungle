@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "GameLayer.h"
 #include "MenuLayer.h"
+#include "CharacterSelectionLayer.h"
 
 Game::Game() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -16,6 +17,7 @@ Game::Game() {
 
 	menuLayer = new MenuLayer(this);
 	gameLayer = new GameLayer(this);
+	characterSelectionLayer = new CharacterSelectionLayer(this, (GameLayer*) gameLayer);
 	layer = menuLayer; // Pantalla INICIAL MENULAYER
 
 	// fuentes

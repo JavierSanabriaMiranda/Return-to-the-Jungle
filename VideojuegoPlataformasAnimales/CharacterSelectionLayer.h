@@ -24,7 +24,7 @@ public:
 	Actor* buttonSerpiente;
 	Actor* buttonCapibara;
 	Actor* buttonMono;
-	GameLayer* gameLayer;
+	GameLayer* currentGameLayer;
 
 	bool selectedTucan = false;
 	bool selectedElefante = false;

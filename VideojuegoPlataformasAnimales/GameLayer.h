@@ -25,6 +25,7 @@ public:
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
 	void mouseToControls(SDL_Event event);
+	void addCharacter(Player* character);
 
 	Actor* message;
 	bool pause;
@@ -46,5 +47,10 @@ public:
 	int controlMoveY = 0;
 	int controlMoveX = 0;
 
+	int nextCharacter = 1;
+
+private:
+	void getMainCharacterForLevel();
+	void changeCharacter();
 };
 

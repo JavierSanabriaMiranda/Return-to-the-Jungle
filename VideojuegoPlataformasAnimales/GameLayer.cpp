@@ -1,10 +1,12 @@
 #include "GameLayer.h"
+#include "Tucan.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 
+	getMainCharacterForLevel();
 	init();
 }
 
@@ -26,6 +28,7 @@ void GameLayer::init() {
 }
 
 void GameLayer::loadMap(string name) {
+
 	string mapName = "res/" + name + ".txt";
 	string backgroundName = "res/fondo_" + name + ".jpg";
 
@@ -61,20 +64,22 @@ void GameLayer::loadMap(string name) {
 		player->x = checkpoint->x;
 		player->y = checkpoint->y;
 	}
+	// TODO cambiar de sitio
+	game->layer = game->characterSelectionLayer;
 }
 
 void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = new Player("res/Tucan.png", x, y, 60, 40,game);
+		player = characters[0];
+		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
 		break;
 	}
 	case '#': {
-		// TODO poner nombre de la imagen bien
 		Tile* tile = new Tile("res/Suelo_ciudad.png", x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
@@ -162,6 +167,7 @@ void GameLayer::update() {
 	// Nivel superado
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
+		game->layer = game->characterSelectionLayer;
 		if (game->currentLevel > game->finalLevel) {
 			game->currentLevel = 0;
 			message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
@@ -170,6 +176,13 @@ void GameLayer::update() {
 		
 		pause = true;
 		takenCheckpoint = false;
+		// vaciamos los personajes
+		for (int i = 0; i < 3; i++) {
+			characters[i] = nullptr;
+		}
+		// Seleccionamos al personaje "protagonista" del nivel
+		getMainCharacterForLevel();
+		
 		init();
 	}
 
@@ -228,7 +241,7 @@ void GameLayer::update() {
 	//}
 	//deleteCollectables.clear();
 
-	cout << "update GameLayer" << endl;
+	
 }
 
 void GameLayer::calculateScroll() {
@@ -301,6 +314,9 @@ void GameLayer::keysToControls(SDL_Event event) {
 		case SDLK_s: // abajo
 			controlMoveY = 1;
 			break;
+		case SDLK_c: // cambiar personaje
+			changeCharacter();
+			break;
 		}
 
 
@@ -338,6 +354,41 @@ void GameLayer::mouseToControls(SDL_Event event) {
 	// Cada vez que hacen click
 	if (event.type == SDL_MOUSEBUTTONDOWN) {
 		controlContinue = true;
+	}
+}
+
+void GameLayer::addCharacter(Player* character) {
+	for (int i = 0; i < 3; i++) {
+		if (characters[i] == nullptr) {
+			characters[i] = character;
+			break;
+		}
+	}
+}
+
+void GameLayer::changeCharacter() {
+	int x = player->x;
+	int y = player->y;
+
+	player = characters[nextCharacter];
+	player->setLocation(x, y);
+	nextCharacter++;
+	if (nextCharacter > 2) {
+		nextCharacter = 0;
+	}
+}
+
+void GameLayer::getMainCharacterForLevel() {
+	switch (game->currentLevel) {
+	case 0:
+		addCharacter(new Tucan(0, 0, game));
+		break;
+	case 1:
+		addCharacter(new Tucan(0, 0, game));
+		break;
+	case 2:
+		addCharacter(new Tucan(0, 0, game));
+		break;
 	}
 }
 

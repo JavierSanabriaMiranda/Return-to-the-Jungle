@@ -59,7 +59,8 @@ void MenuLayer::processControls() {
 	//procesar controles, solo tiene uno
 	if (controlContinue) {
 		// Cambia la capa
-		game->layer = game->gameLayer;
+		//game->layer = game->gameLayer;
+		game->layer = game->characterSelectionLayer;
 		controlContinue = false;
 	}
 }
