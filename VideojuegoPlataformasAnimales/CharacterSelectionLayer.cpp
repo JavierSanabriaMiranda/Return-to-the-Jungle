@@ -155,6 +155,7 @@ void CharacterSelectionLayer::selectTucan() {
 		currentGameLayer->addCharacter(new Tucan(0, 0, game));
 		charactersSelected++;
 		selectedTucan = true;
+		buttonTucan = new Actor("res/tucan_escogido.png", WIDTH * 0.2, HEIGHT * 0.4, 100, 100, game);
 		if (charactersSelected == 3) {
 			controlContinue = true;
 			charactersSelected = 1;
