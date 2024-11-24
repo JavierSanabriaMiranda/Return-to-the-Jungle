@@ -18,6 +18,10 @@ Player::Player(string img ,float x, float y, int width, int height, Game* game)
 		420, 41, 6, 6, true, game);
 	aRunningLeft = new Animation("res/Tucan_andando_izquierda.png", width, height,
 		420, 41, 6, 6, true, game);
+	aIdleRight = new Animation("res/Tucan.png", width, height,
+		60, 40, 6, 1, true, game);
+	aIdleLeft = new Animation("res/Tucan.png", width, height,
+		60, 40, 6, 1, true, game);
 
 	animation = aRunningRight;
 }
@@ -77,10 +81,10 @@ void Player::update() {
 		}
 		if (vx == 0) {
 			if (orientation == game->orientationRight) {
-				animation = aRunningRight;
+				animation = aIdleRight;
 			}
 			if (orientation == game->orientationLeft) {
-				animation = aRunningLeft;
+				animation = aIdleLeft;
 			}
 		}
 	}
@@ -121,4 +125,9 @@ void Player::loseLife() {
 			// 100 actualizaciones 
 		}
 	}
+}
+
+void Player::setLocation(float x, float y) {
+	this->x = x;
+	this->y = y;
 }
