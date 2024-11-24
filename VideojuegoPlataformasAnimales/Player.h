@@ -6,7 +6,7 @@
 class Player : public Actor
 {
 public:
-	Player(float x, float y, Game* game);
+	Player(string img, float x, float y, int width, int height, Game* game);
 	void update();
 	void virtual jump();
 	void moveX(float axis);
