@@ -3,6 +3,9 @@
 #include "Layer.h"
 #include "Player.h"
 #include "Background.h"
+#include "Space.h"
+#include "Tile.h"
+#include "Audio.h"
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -23,5 +26,26 @@ public:
 	void calculateScroll();
 	void mouseToControls(SDL_Event event); // USO DE MOUSE
 	void gamePadToControls(SDL_Event event); // USO DE GAMEPAD
+
+	Actor* message;
+	bool pause;
+	Space* space;
+	float scrollX;
+	int mapWidth;
+	list<Tile*> tiles;
+	bool controlContinue = false;
+	Player* characters[3];
+	Player* player;
+	Background* background;
+
+	Tile* citySign; // Elemento de final de nivel
+	Tile* checkpoint; // Elemento de checkpoint
+	bool takenCheckpoint; // Marca si se ha cogido o no el checkpoint
+
+	Audio* audioBackground;
+
+	int controlMoveY = 0;
+	int controlMoveX = 0;
+
 };
 

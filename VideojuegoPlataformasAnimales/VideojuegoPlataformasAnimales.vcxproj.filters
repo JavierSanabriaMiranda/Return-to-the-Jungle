@@ -60,6 +60,15 @@
     <ClInclude Include="Tucan.h">
       <Filter>Archivos de encabezado\actores\personajes</Filter>
     </ClInclude>
+    <ClInclude Include="Space.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Archivos de encabezado\actores</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -91,6 +100,15 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Space.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Archivos de origen\actores</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
