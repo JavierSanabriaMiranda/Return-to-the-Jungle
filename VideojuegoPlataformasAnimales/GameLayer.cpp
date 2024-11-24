@@ -67,7 +67,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = new Player(x, y, game);
+		player = new Player("res/Tucan.png", x, y, 40, 40,game);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
 		space->addDynamicActor(player);
@@ -75,7 +75,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 	}
 	case '#': {
 		// TODO poner nombre de la imagen bien
-		Tile* tile = new Tile("res/bloque_suelo.png", x, y, game);
+		Tile* tile = new Tile("res/Suelo_ciudad.png", x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -83,7 +83,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'S': {
-		citySign = new Tile("res/cartel.png", x, y, game);
+		citySign = new Tile("res/Cartel.png", x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		citySign->y = citySign->y - citySign->height / 2;
 		space->addDynamicActor(citySign); // Realmente no hace falta
@@ -107,20 +107,12 @@ void GameLayer::processControls() {
 	while (SDL_PollEvent(&event)) {
 
 		// Cambio automático de input
-		// PONER el GamePad
-		if (event.type == SDL_CONTROLLERBUTTONDOWN || event.type == SDL_CONTROLLERAXISMOTION) {
-			game->input = game->inputGamePad;
-		}
 
 		if (event.type == SDL_KEYDOWN) {
 			game->input = game->inputKeyboard;
 		}
 		if (event.type == SDL_MOUSEBUTTONDOWN) {
 			game->input = game->inputMouse;
-		}
-		// Procesar Mando
-		if (game->input == game->inputGamePad) {  // gamePAD
-			gamePadToControls(event);
 		}
 		// Procesar teclas
 		if (game->input == game->inputKeyboard) {
@@ -281,9 +273,7 @@ void GameLayer::draw() {
 	//backgroundCollectables->draw();
 	//textCollectables->draw();
 
-	if (pause) {
-		message->draw();
-	}
+
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }
@@ -342,4 +332,12 @@ void GameLayer::keysToControls(SDL_Event event) {
 		}
 
 	}
+
 }
+void GameLayer::mouseToControls(SDL_Event event) {
+	// Cada vez que hacen click
+	if (event.type == SDL_MOUSEBUTTONDOWN) {
+		controlContinue = true;
+	}
+}
+

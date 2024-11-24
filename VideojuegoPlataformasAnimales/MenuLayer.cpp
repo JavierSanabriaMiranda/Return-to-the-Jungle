@@ -10,7 +10,7 @@ void MenuLayer::init() {
 	// Fondo normal, sin velocidad
 	// TODO cambiar fondo
 	background = new Background("res/Fondo_menu.jpg", WIDTH * 0.5, HEIGHT * 0.5, game);
-	button = new Actor("res/Boton_jugar.png", WIDTH * 0.5, HEIGHT * 0.7, 232, 72, game);
+	button = new Actor("res/Boton_jugar.png", WIDTH * 0.5, HEIGHT * 0.4, 232, 72, game);
 }
 
 void MenuLayer::draw() {

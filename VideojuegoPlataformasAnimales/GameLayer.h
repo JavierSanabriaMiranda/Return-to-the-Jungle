@@ -24,8 +24,7 @@ public:
 	void loadMap(string name);
 	void loadMapObject(char character, float x, float y);
 	void calculateScroll();
-	void mouseToControls(SDL_Event event); // USO DE MOUSE
-	void gamePadToControls(SDL_Event event); // USO DE GAMEPAD
+	void mouseToControls(SDL_Event event);
 
 	Actor* message;
 	bool pause;

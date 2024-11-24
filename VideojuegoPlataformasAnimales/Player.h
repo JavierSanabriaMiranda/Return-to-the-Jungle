@@ -25,6 +25,5 @@ public:
 	Animation* aRunningRight;
 	Animation* aRunningLeft;
 	Animation* animation; // Referencia a la animación mostrada
-	int shootCadence = 30;
-	int shootTime = 0;
+
 };

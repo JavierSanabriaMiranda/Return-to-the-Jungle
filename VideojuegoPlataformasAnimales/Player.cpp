@@ -9,6 +9,18 @@ Player::Player(string img ,float x, float y, int width, int height, Game* game)
 	onAir = false;
 	orientation = game->orientationRight;
 	state = game->stateMoving;
+
+	aJumpingRight = new Animation("res/Tucan_saltando_derecha.png",
+		width, height, 320, 40, 6, 8, true, game);
+	aJumpingLeft = new Animation("res/Tucan_saltando_izquierda.png",
+		width, height, 320, 40, 6, 8, true, game);
+	aRunningRight = new Animation("res/Tucan_andando_derecha.png", width, height,
+		240, 40, 6, 6, true, game);
+	aRunningLeft = new Animation("res/Tucan_andando_izquierda.png", width, height,
+		240, 40, 6, 6, true, game);
+
+
+	animation = aRunningRight;
 }
 
 
@@ -34,15 +46,6 @@ void Player::update() {
 	}
 	else {
 		onAir = true;
-	}
-
-
-	// Acabo la animación, no sabemos cual
-	if (endAnimation) {
-		// Estaba disparando
-		if (state == game->stateShooting) {
-			state = game->stateMoving;
-		}
 	}
 
 
@@ -75,17 +78,12 @@ void Player::update() {
 		}
 		if (vx == 0) {
 			if (orientation == game->orientationRight) {
-				animation = aIdleRight;
+				animation = aRunningRight;
 			}
 			if (orientation == game->orientationLeft) {
-				animation = aIdleLeft;
+				animation = aRunningLeft;
 			}
 		}
-	}
-
-
-	if (shootTime > 0) {
-		shootTime--;
 	}
 
 }
