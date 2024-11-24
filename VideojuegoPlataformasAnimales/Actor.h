@@ -11,6 +11,7 @@ public:
 	bool isOverlap(Actor* actor);
 	bool containsPoint(int pointX, int pointY); // contiene punto
 	bool isInRender(float scrollX = 0);
+	virtual void setVY(float vy);
 
 	bool outRight;
 	bool outLeft;

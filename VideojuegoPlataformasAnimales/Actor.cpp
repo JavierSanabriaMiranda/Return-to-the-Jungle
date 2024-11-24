@@ -68,6 +68,8 @@ bool Actor::containsPoint(int pointX, int pointY) {
 	return false;
 }
 
-
+void Actor::setVY(float vy) {
+	this->vy = vy;
+}
 
 

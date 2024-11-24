@@ -31,6 +31,12 @@
     <Filter Include="Archivos de origen\actores\personajes">
       <UniqueIdentifier>{28cbaf3b-0115-4c8a-bcd0-58e037fbdb2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\actores\tiles">
+      <UniqueIdentifier>{c47e650d-5caa-4aa7-ba85-c283361ba761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\actores\tiles">
+      <UniqueIdentifier>{53ad96ec-abe3-4bf6-a161-bbb3ddac1ef1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -63,14 +69,17 @@
     <ClInclude Include="Space.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Archivos de encabezado\actores</Filter>
-    </ClInclude>
     <ClInclude Include="Audio.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="CharacterSelectionLayer.h">
       <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="VineTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,14 +116,17 @@
     <ClCompile Include="Space.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Archivos de origen\actores</Filter>
-    </ClCompile>
     <ClCompile Include="Audio.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="CharacterSelectionLayer.cpp">
       <Filter>Archivos de origen\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="VineTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

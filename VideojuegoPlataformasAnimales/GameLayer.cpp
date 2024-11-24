@@ -1,5 +1,6 @@
 #include "GameLayer.h"
 #include "Tucan.h"
+#include "VineTile.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -88,7 +89,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'S': {
-		citySign = new Tile("res/Cartel.png", x, y, game);
+		citySign = new Actor("res/Cartel.png", x, y, 45, 53, game);
 		// modificación para empezar a contar desde el suelo.
 		citySign->y = citySign->y - citySign->height / 2;
 		space->addDynamicActor(citySign); // Realmente no hace falta
@@ -99,6 +100,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		// modificación para empezar a contar desde el suelo.
 		checkpoint->y = checkpoint->y - checkpoint->height / 2;
 		space->addDynamicActor(checkpoint);
+		break;
+	}
+	case 'L': {
+		Tile* tile = new VineTile( x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addDynamicActor(tile);
 		break;
 	}
 

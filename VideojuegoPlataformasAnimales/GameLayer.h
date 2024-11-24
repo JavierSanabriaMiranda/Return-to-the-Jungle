@@ -38,7 +38,7 @@ public:
 	Player* player;
 	Background* background;
 
-	Tile* citySign; // Elemento de final de nivel
+	Actor* citySign; // Elemento de final de nivel
 	Tile* checkpoint; // Elemento de checkpoint
 	bool takenCheckpoint; // Marca si se ha cogido o no el checkpoint
 
