@@ -17,6 +17,7 @@ public:
 	int lifes = 3;
 	int invulnerableTime = 0;
 	bool onAir;
+	bool moving;
 	int orientation;
 	int state;
 	Animation* aIdleRight;
@@ -25,6 +26,7 @@ public:
 	Animation* aJumpingLeft;
 	Animation* aRunningRight;
 	Animation* aRunningLeft;
+	
 	Animation* animation; // Referencia a la animación mostrada
 
 };

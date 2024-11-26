@@ -7,6 +7,7 @@ GameLayer::GameLayer(Game* game)
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 
+	space = new Space(1);
 	getMainCharacterForLevel();
 	init();
 }
@@ -14,7 +15,6 @@ GameLayer::GameLayer(Game* game)
 
 void GameLayer::init() {
 
-	space = new Space(1);
 	scrollX = 0;
 	tiles.clear();
 
@@ -77,7 +77,6 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
-		space->addDynamicActor(player);
 		break;
 	}
 	case '#': {
@@ -370,6 +369,7 @@ void GameLayer::addCharacter(Player* character) {
 	for (int i = 0; i < 3; i++) {
 		if (characters[i] == nullptr) {
 			characters[i] = character;
+			space->addDynamicActor(character);
 			break;
 		}
 	}
