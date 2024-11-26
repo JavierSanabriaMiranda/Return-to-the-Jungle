@@ -131,3 +131,11 @@ void Player::setLocation(float x, float y) {
 	this->x = x;
 	this->y = y;
 }
+
+string Player::getType() {
+	return "Player";
+}
+
+void Player::moveDown() {
+	//Do nothing
+}
