@@ -1,5 +1,7 @@
 #include "GameLayer.h"
 #include "Tucan.h"
+#include "Capibara.h"
+#include "Mono.h"
 #include "VineTile.h"
 
 GameLayer::GameLayer(Game* game)
@@ -399,10 +401,10 @@ void GameLayer::changeCharacter() {
 void GameLayer::getMainCharacterForLevel() {
 	switch (game->currentLevel) {
 	case 0:
-		addCharacter(new Tucan(0, 0, game));
+		addCharacter(new Mono(0, 0, game));
 		break;
 	case 1:
-		addCharacter(new Tucan(0, 0, game));
+		addCharacter(new Capibara(0, 0, game));
 		break;
 	case 2:
 		addCharacter(new Tucan(0, 0, game));

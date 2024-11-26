@@ -2,6 +2,7 @@
 #include "Tucan.h"
 #include "Mono.h"
 #include "Capibara.h"
+#include "Elefante.h"
 
 
 CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLayer)
@@ -13,10 +14,9 @@ CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLaye
 
 void CharacterSelectionLayer::init() {
 	// Fondo normal, sin velocidad
-	// TODO cambiar fondo
 	setFondo("res/Fondo_seleccion_personaje.jpg");
 	buttonTucan = new Actor("res/seleccion_tucan.png", WIDTH * 0.2, HEIGHT * 0.4, 100, 100, game);
-	buttonElefante = new Actor("res/seleccion_tucan.png", WIDTH * 0.5, HEIGHT * 0.4, 100, 100, game);
+	buttonElefante = new Actor("res/seleccion_elefante.png", WIDTH * 0.5, HEIGHT * 0.4, 100, 100, game);
 	buttonSerpiente = new Actor("res/seleccion_tucan.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
 	buttonCapibara = new Actor("res/seleccion_capibara.png", WIDTH * 0.35, HEIGHT * 0.75, 100, 100, game);
 	buttonMono = new Actor("res/seleccion_mono.png", WIDTH * 0.65, HEIGHT * 0.75, 100, 100, game);
@@ -151,7 +151,7 @@ void CharacterSelectionLayer::selectTucan() {
 
 void CharacterSelectionLayer::selectElefante() {
 	if (selectedElefante == false) {
-		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
+		currentGameLayer->addCharacter(new Elefante(0, 0, game));
 		charactersSelected++;
 		selectedElefante = true;
 		if (charactersSelected == 3) {
