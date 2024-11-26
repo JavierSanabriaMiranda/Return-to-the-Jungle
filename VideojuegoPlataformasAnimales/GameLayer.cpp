@@ -5,6 +5,8 @@
 #include "Capibara.h"
 #include "Mono.h"
 #include "VineTile.h"
+#include "WaterTile.h"
+#include "WaterTileFondo.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -22,6 +24,7 @@ void GameLayer::firstPrepareGameLayer() {
 void GameLayer::init() {
 	scrollX = 0;
 	tiles.clear();
+	waterTiles.clear();
 	vineTiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
@@ -118,6 +121,18 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(tile);
 		break;
 	}
+	case 'W': {
+		Tile* tile = new WaterTile(x, y, game);
+		Tile* fondoTile = new WaterTileFondo(x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		fondoTile->y = fondoTile->y - fondoTile->height / 2;
+		tiles.push_back(fondoTile);
+		waterTiles.push_back(tile);
+		space->addDynamicActor(tile);
+		space->addDynamicActor(fondoTile);
+		break;
+	}
 
 	}
 }
@@ -163,7 +178,7 @@ void GameLayer::processControls() {
 
 	// Eje Y
 	if (controlMoveY > 0) {
-
+		player->moveDown();
 	}
 	else if (controlMoveY < 0) {
 		player->jump();
@@ -213,6 +228,26 @@ void GameLayer::update() {
 	// Obtenido el checkpoint
 	if (checkpoint->isOverlap(player)) {
 		takenCheckpoint = true;
+	}
+
+	//Colisiones con el agua
+	for (auto const& water : waterTiles) {
+		if (player->getType()=="Capibara") {
+			Capibara* capi = (Capibara*)player;
+			if (water->isOverlap(player)) {
+				capi->canSwim = true;
+				break;
+			}
+			else {
+				capi->canSwim = false;
+			}
+		}
+		else {
+			if (water->isOverlap(player)) {
+				init(); //Si no es una capibara, no puede nadar y muere
+				break;
+			}
+		}
 	}
 
 	// Jugador se cae
@@ -314,6 +349,9 @@ void GameLayer::draw() {
 	citySign->draw(scrollX);
 	checkpoint->draw(scrollX);
 	player->draw(scrollX);
+	for (auto const& tile : waterTiles) {
+		tile->draw(scrollX);
+	}
 	//for (auto const& enemy : enemies) {
 	//	enemy->draw(scrollX);
 	//}

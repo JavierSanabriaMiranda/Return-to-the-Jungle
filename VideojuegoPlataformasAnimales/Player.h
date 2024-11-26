@@ -9,12 +9,14 @@ public:
 	Player(string img, float x, float y, int width, int height, Game* game);
 	void virtual update() ;
 	void virtual jump();
+	void virtual moveDown();
 	string virtual getType();
 	void virtual moveX(float axis);
 	void moveY(float axis);
 	void draw(float scrollX = 0) override; // Va a sobrescribir
 	void loseLife();
 	void setLocation(float x, float y);
+	
 	int lifes = 3;
 	int invulnerableTime = 0;
 	bool onAir;

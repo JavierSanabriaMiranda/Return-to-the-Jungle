@@ -35,6 +35,7 @@ public:
 	float scrollX;
 	int mapWidth;
 	list<Tile*> tiles;
+	list<Tile*> waterTiles;
 	list<VineTile*> vineTiles;
 	bool controlContinue = false;
 	Player* characters[3];

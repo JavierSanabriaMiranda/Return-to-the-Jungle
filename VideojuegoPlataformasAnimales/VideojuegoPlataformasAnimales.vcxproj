@@ -218,6 +218,8 @@
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tucan.h" />
     <ClInclude Include="VineTile.h" />
+    <ClInclude Include="WaterTile.h" />
+    <ClInclude Include="WaterTileFondo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
@@ -239,6 +241,8 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tucan.cpp" />
     <ClCompile Include="VineTile.cpp" />
+    <ClCompile Include="WaterTile.cpp" />
+    <ClCompile Include="WaterTileFondo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

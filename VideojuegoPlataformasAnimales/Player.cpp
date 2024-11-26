@@ -135,3 +135,7 @@ void Player::setLocation(float x, float y) {
 string Player::getType() {
 	return "Player";
 }
+
+void Player::moveDown() {
+	//Do nothing
+}
