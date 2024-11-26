@@ -19,9 +19,9 @@ Mono::Mono(float x, float y, Game* game)
 		347, 40, 6, 6, true, game);
 	aIdleLeft = new Animation("res/Mono_estatico_izquierda.png", width, height,
 		347, 40, 6, 6, true, game);
-	aClimbingRight = new Animation("res/Mono_estatico_derecha.png", width, height,
+	aClimbingRight = new Animation("res/Mono_saltando_derecha.png", width, height,
 		185, 45, 6, 3, true, game);
-	aClimbingLeft = new Animation("res/Mono_estatico_izquierda.png", width, height,
+	aClimbingLeft = new Animation("res/Mono_saltando_izquierda.png", width, height,
 		185, 45, 6, 3, true, game);
 
 	animation = aRunningRight;

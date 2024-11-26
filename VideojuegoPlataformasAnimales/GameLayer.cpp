@@ -29,8 +29,6 @@ void GameLayer::init() {
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
-
-
 	loadMap(to_string(game->currentLevel));
 }
 
