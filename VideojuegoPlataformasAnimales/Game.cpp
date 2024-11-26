@@ -17,7 +17,8 @@ Game::Game() {
 
 	menuLayer = new MenuLayer(this);
 	gameLayer = new GameLayer(this);
-	characterSelectionLayer = new CharacterSelectionLayer(this, (GameLayer*) gameLayer);
+	characterSelectionLayer = new CharacterSelectionLayer(this, (GameLayer*)gameLayer);
+	((GameLayer*)(gameLayer))->firstPrepareGameLayer();
 	layer = menuLayer; // Pantalla INICIAL MENULAYER
 
 	// fuentes

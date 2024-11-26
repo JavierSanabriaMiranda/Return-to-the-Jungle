@@ -32,9 +32,8 @@ public:
 	bool selectedCapibara = false;
 	bool selectedMono = false;
 
-	int charactersSelected = 1;
+	int charactersSelected = 0;
 
-private:
 	void selectTucan();
 	void selectElefante();
 	void selectSerpiente();

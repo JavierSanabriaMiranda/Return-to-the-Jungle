@@ -1,4 +1,6 @@
 #include "GameLayer.h"
+#include "CharacterSelectionLayer.h"
+
 #include "Tucan.h"
 #include "Capibara.h"
 #include "Mono.h"
@@ -8,8 +10,10 @@ GameLayer::GameLayer(Game* game)
 	: Layer(game) {
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
-
 	space = new Space(1);
+}
+
+void GameLayer::firstPrepareGameLayer() {
 	getMainCharacterForLevel();
 	init();
 }
@@ -186,6 +190,7 @@ void GameLayer::update() {
 		}
 		getMainCharacterForLevel();
 		// Abrimos la pantalla de selección de personajes
+		game->characterSelectionLayer->init();
 		game->layer = game->characterSelectionLayer;
 		if (game->currentLevel > game->finalLevel) {
 			game->currentLevel = 0;
@@ -401,13 +406,13 @@ void GameLayer::changeCharacter() {
 void GameLayer::getMainCharacterForLevel() {
 	switch (game->currentLevel) {
 	case 0:
-		addCharacter(new Mono(0, 0, game));
+		((CharacterSelectionLayer*)(game->characterSelectionLayer))->selectMono();
 		break;
 	case 1:
-		addCharacter(new Capibara(0, 0, game));
+		((CharacterSelectionLayer*)(game->characterSelectionLayer))->selectCapibara();
 		break;
 	case 2:
-		addCharacter(new Tucan(0, 0, game));
+		((CharacterSelectionLayer*)(game->characterSelectionLayer))->selectTucan();
 		break;
 	}
 }

@@ -14,6 +14,8 @@ CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLaye
 }
 
 void CharacterSelectionLayer::init() {
+	charactersSelected = 0;
+
 	// Fondo normal, sin velocidad
 	setFondo("res/Fondo_seleccion_personaje.jpg");
 	buttonTucan = new Actor("res/seleccion_tucan.png", WIDTH * 0.2, HEIGHT * 0.4, 100, 100, game);
