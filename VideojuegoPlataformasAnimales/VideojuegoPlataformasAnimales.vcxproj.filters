@@ -81,6 +81,9 @@
     <ClInclude Include="VineTile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
+    <ClInclude Include="Mono.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -127,6 +130,9 @@
     </ClCompile>
     <ClCompile Include="VineTile.cpp">
       <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Mono.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
