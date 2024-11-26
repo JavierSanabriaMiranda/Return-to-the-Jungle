@@ -112,32 +112,16 @@ void CharacterSelectionLayer::mouseToControls(SDL_Event event) {
 			selectTucan();
 		}
 		if (buttonCapibara->containsPoint(motionX, motionY)) {
-			charactersSelected++;
-			if (charactersSelected == 3) {
-				controlContinue = true;
-				charactersSelected = 1;
-			}
+			selectCapibara();
 		}
 		if (buttonElefante->containsPoint(motionX, motionY)) {
-			charactersSelected++;
-			if (charactersSelected == 3) {
-				controlContinue = true;
-				charactersSelected = 1;
-			}
+			selectElefante();
 		}
 		if (buttonSerpiente->containsPoint(motionX, motionY)) {
-			charactersSelected++;
-			if (charactersSelected == 3) {
-				controlContinue = true;
-				charactersSelected = 1;
-			}
+			selectSerpiente();
 		}
 		if (buttonMono->containsPoint(motionX, motionY)) {
-			charactersSelected++;
-			if (charactersSelected == 3) {
-				controlContinue = true;
-				charactersSelected = 1;
-			}
+			selectMono();
 		}
 	}
 }

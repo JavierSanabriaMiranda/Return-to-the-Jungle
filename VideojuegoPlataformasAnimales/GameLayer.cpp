@@ -7,14 +7,13 @@ GameLayer::GameLayer(Game* game)
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 
+	space = new Space(1);
 	getMainCharacterForLevel();
 	init();
 }
 
 
 void GameLayer::init() {
-
-	space = new Space(1);
 	scrollX = 0;
 	tiles.clear();
 
@@ -65,8 +64,12 @@ void GameLayer::loadMap(string name) {
 		player->x = checkpoint->x;
 		player->y = checkpoint->y;
 	}
-	// TODO cambiar de sitio
-	game->layer = game->characterSelectionLayer;
+	for (Player* character : characters) {
+		if (character == nullptr) {
+			game->layer = game->characterSelectionLayer;
+			break;
+		}
+	}
 }
 
 void GameLayer::loadMapObject(char character, float x, float y)
@@ -77,7 +80,6 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
-		space->addDynamicActor(player);
 		break;
 	}
 	case '#': {
@@ -176,6 +178,12 @@ void GameLayer::update() {
 	// Nivel superado
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
+		// Vaciamos la lista de personajes
+		for (int i = 0; i < sizeof(characters); i++) {
+			characters[i] = nullptr;
+		}
+		getMainCharacterForLevel();
+		// Abrimos la pantalla de selección de personajes
 		game->layer = game->characterSelectionLayer;
 		if (game->currentLevel > game->finalLevel) {
 			game->currentLevel = 0;
@@ -370,6 +378,7 @@ void GameLayer::addCharacter(Player* character) {
 	for (int i = 0; i < 3; i++) {
 		if (characters[i] == nullptr) {
 			characters[i] = character;
+			space->addDynamicActor(character);
 			break;
 		}
 	}
