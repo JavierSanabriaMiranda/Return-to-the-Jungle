@@ -14,7 +14,6 @@ GameLayer::GameLayer(Game* game)
 
 
 void GameLayer::init() {
-
 	scrollX = 0;
 	tiles.clear();
 
@@ -65,8 +64,12 @@ void GameLayer::loadMap(string name) {
 		player->x = checkpoint->x;
 		player->y = checkpoint->y;
 	}
-	// TODO cambiar de sitio
-	game->layer = game->characterSelectionLayer;
+	for (Player* character : characters) {
+		if (character == nullptr) {
+			game->layer = game->characterSelectionLayer;
+			break;
+		}
+	}
 }
 
 void GameLayer::loadMapObject(char character, float x, float y)
@@ -175,6 +178,12 @@ void GameLayer::update() {
 	// Nivel superado
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
+		// Vaciamos la lista de personajes
+		for (int i = 0; i < sizeof(characters); i++) {
+			characters[i] = nullptr;
+		}
+		getMainCharacterForLevel();
+		// Abrimos la pantalla de selección de personajes
 		game->layer = game->characterSelectionLayer;
 		if (game->currentLevel > game->finalLevel) {
 			game->currentLevel = 0;
