@@ -213,6 +213,7 @@
     <ClInclude Include="MenuLayer.h" />
     <ClInclude Include="Mono.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Space.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tucan.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="MenuLayer.cpp" />
     <ClCompile Include="Mono.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Serpiente.cpp" />
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tucan.cpp" />

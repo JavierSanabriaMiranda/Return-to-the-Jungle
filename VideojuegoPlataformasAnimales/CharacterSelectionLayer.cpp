@@ -3,6 +3,7 @@
 #include "Mono.h"
 #include "Capibara.h"
 #include "Elefante.h"
+#include "Serpiente.h"
 
 
 CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLayer)
@@ -17,7 +18,7 @@ void CharacterSelectionLayer::init() {
 	setFondo("res/Fondo_seleccion_personaje.jpg");
 	buttonTucan = new Actor("res/seleccion_tucan.png", WIDTH * 0.2, HEIGHT * 0.4, 100, 100, game);
 	buttonElefante = new Actor("res/seleccion_elefante.png", WIDTH * 0.5, HEIGHT * 0.4, 100, 100, game);
-	buttonSerpiente = new Actor("res/seleccion_tucan.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
+	buttonSerpiente = new Actor("res/seleccion_serpiente.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
 	buttonCapibara = new Actor("res/seleccion_capibara.png", WIDTH * 0.35, HEIGHT * 0.75, 100, 100, game);
 	buttonMono = new Actor("res/seleccion_mono.png", WIDTH * 0.65, HEIGHT * 0.75, 100, 100, game);
 
@@ -154,6 +155,7 @@ void CharacterSelectionLayer::selectElefante() {
 		currentGameLayer->addCharacter(new Elefante(0, 0, game));
 		charactersSelected++;
 		selectedElefante = true;
+		buttonElefante = new Actor("res/elefante_escogido.png", WIDTH * 0.5, HEIGHT * 0.4, 100, 100, game);
 		if (charactersSelected == 3) {
 			controlContinue = true;
 			charactersSelected = 1;
@@ -163,9 +165,10 @@ void CharacterSelectionLayer::selectElefante() {
 
 void CharacterSelectionLayer::selectSerpiente() {
 	if (selectedSerpiente == false) {
-		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
+		currentGameLayer->addCharacter(new Serpiente(0, 0, game));
 		charactersSelected++;
 		selectedSerpiente = true;
+		buttonSerpiente = new Actor("res/serpiente_escogido.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
 		if (charactersSelected == 3) {
 			controlContinue = true;
 			charactersSelected = 1;
@@ -178,6 +181,7 @@ void CharacterSelectionLayer::selectCapibara() {
 		currentGameLayer->addCharacter(new Capibara(0, 0, game));
 		charactersSelected++;
 		selectedCapibara = true;
+		buttonCapibara = new Actor("res/capibara_escogido.png", WIDTH * 0.35, HEIGHT * 0.75, 100, 100, game);
 		if (charactersSelected == 3) {
 			controlContinue = true;
 			charactersSelected = 1;
@@ -190,6 +194,7 @@ void CharacterSelectionLayer::selectMono() {
 		currentGameLayer->addCharacter(new Mono(0, 0, game));
 		charactersSelected++;
 		selectedMono = true;
+		buttonMono = new Actor("res/mono_escogido.png", WIDTH * 0.65, HEIGHT * 0.75, 100, 100, game);
 		if (charactersSelected == 3) {
 			controlContinue = true;
 			charactersSelected = 1;
