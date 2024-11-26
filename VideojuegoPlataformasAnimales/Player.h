@@ -23,6 +23,7 @@ public:
 	bool moving;
 	int orientation;
 	int state;
+	int jumpQuantity = -16;
 	Animation* aIdleRight;
 	Animation* aIdleLeft;
 	Animation* aJumpingRight;

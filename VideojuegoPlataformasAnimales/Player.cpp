@@ -112,7 +112,7 @@ void Player::draw(float scrollX) {
 
 void Player::jump() {
 	if (!onAir) {
-		vy = -16;
+		vy = jumpQuantity;
 		onAir = true;
 	}
 }

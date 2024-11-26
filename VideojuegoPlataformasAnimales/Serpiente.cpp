@@ -22,3 +22,14 @@ Serpiente::Serpiente(float x, float y, Game* game)
 
 	animation = aRunningRight;
 }
+
+void Serpiente::moveX(float axis) {
+	vx = axis * 4;
+}
+
+void Serpiente::jump() {
+	if (!onAir) {
+		vy = jumpQuantity;
+		onAir = true;
+	}
+}

@@ -42,7 +42,7 @@ void Tucan::jump() {
 	if (jumpCoolDown > 0) {
 		return;
 	}
-	vy = -16;
+	vy = jumpQuantity;
 	onAir = true;
 	remainingJumps--;
 	jumpCoolDown = 10;

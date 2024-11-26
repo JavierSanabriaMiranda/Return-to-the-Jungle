@@ -22,3 +22,10 @@ Elefante::Elefante(float x, float y, Game* game)
 
 	animation = aRunningRight;
 }
+
+void Elefante::jump() {
+	if (!onAir) {
+		vy = jumpQuantity;
+		onAir = true;
+	}
+}
