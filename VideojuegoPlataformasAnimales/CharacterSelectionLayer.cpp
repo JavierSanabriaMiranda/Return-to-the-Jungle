@@ -2,6 +2,7 @@
 #include "Tucan.h"
 #include "Mono.h"
 #include "Capibara.h"
+#include "Serpiente.h"
 
 
 CharacterSelectionLayer::CharacterSelectionLayer(Game* game, GameLayer* gameLayer)
@@ -17,7 +18,7 @@ void CharacterSelectionLayer::init() {
 	setFondo("res/Fondo_seleccion_personaje.jpg");
 	buttonTucan = new Actor("res/seleccion_tucan.png", WIDTH * 0.2, HEIGHT * 0.4, 100, 100, game);
 	buttonElefante = new Actor("res/seleccion_tucan.png", WIDTH * 0.5, HEIGHT * 0.4, 100, 100, game);
-	buttonSerpiente = new Actor("res/seleccion_tucan.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
+	buttonSerpiente = new Actor("res/Serpiente.png", WIDTH * 0.8, HEIGHT * 0.4, 82, 25, game);
 	buttonCapibara = new Actor("res/seleccion_capibara.png", WIDTH * 0.35, HEIGHT * 0.75, 100, 100, game);
 	buttonMono = new Actor("res/seleccion_mono.png", WIDTH * 0.65, HEIGHT * 0.75, 100, 100, game);
 
@@ -163,7 +164,7 @@ void CharacterSelectionLayer::selectElefante() {
 
 void CharacterSelectionLayer::selectSerpiente() {
 	if (selectedSerpiente == false) {
-		//currentGameLayer->addCharacter(new Tucan(0, 0, game));
+		currentGameLayer->addCharacter(new Serpiente(0, 0, game));
 		charactersSelected++;
 		selectedSerpiente = true;
 		if (charactersSelected == 3) {
