@@ -5,6 +5,7 @@
 #include "Background.h"
 #include "Space.h"
 #include "Tile.h"
+#include "VineTile.h"
 #include "Audio.h"
 
 #include <fstream> // Leer ficheros
@@ -34,6 +35,7 @@ public:
 	float scrollX;
 	int mapWidth;
 	list<Tile*> tiles;
+	list<VineTile*> vineTiles;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;

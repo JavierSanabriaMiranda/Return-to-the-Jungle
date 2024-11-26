@@ -9,7 +9,8 @@ public:
 	Player(string img, float x, float y, int width, int height, Game* game);
 	void virtual update() ;
 	void virtual jump();
-	void moveX(float axis);
+	string virtual getType();
+	void virtual moveX(float axis);
 	void moveY(float axis);
 	void draw(float scrollX = 0) override; // Va a sobrescribir
 	void loseLife();

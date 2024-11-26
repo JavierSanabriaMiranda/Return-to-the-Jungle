@@ -22,6 +22,7 @@ void GameLayer::firstPrepareGameLayer() {
 void GameLayer::init() {
 	scrollX = 0;
 	tiles.clear();
+	vineTiles.clear();
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
@@ -111,10 +112,11 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'L': {
-		Tile* tile = new VineTile( x, y, game);
+		VineTile* tile = new VineTile( x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
+		vineTiles.push_back(tile);
 		space->addDynamicActor(tile);
 		break;
 	}
@@ -215,15 +217,29 @@ void GameLayer::update() {
 		takenCheckpoint = true;
 	}
 
-
 	// Jugador se cae
 	if (player->y > HEIGHT + 80) {
 		init();
 	}
 
+	player->update();
 	space->update();
 	background->update();
-	player->update();
+	
+	// Colisión con lianas
+	for (auto const& vineTile : vineTiles) {
+		if (player->getType() == "Mono") {
+			Mono* mono = (Mono*)player;
+			if (player->isOverlap(vineTile)) {
+				mono->canClimb = true;
+				break;
+			}
+			else {
+				mono->canClimb = false;
+			}
+
+		}
+	}
 
 	//for (auto const& collectable : collectables) {
 	//	collectable->update();
