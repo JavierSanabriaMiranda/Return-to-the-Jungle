@@ -16,9 +16,10 @@ Game::Game() {
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
 	menuLayer = new MenuLayer(this);
-	gameLayer = new GameLayer(this);
-	characterSelectionLayer = new CharacterSelectionLayer(this, (GameLayer*)gameLayer);
-	((GameLayer*)(gameLayer))->firstPrepareGameLayer();
+	GameLayer* layerForGame = new GameLayer(this);
+	gameLayer = layerForGame;
+	characterSelectionLayer = new CharacterSelectionLayer(this, layerForGame);
+	layerForGame->firstPrepareGameLayer();
 	layer = menuLayer; // Pantalla INICIAL MENULAYER
 
 	// fuentes
