@@ -127,7 +127,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'L': {
-		VineTile* tile = new VineTile( x, y, game);
+		VineTile* tile = new VineTile(x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -153,6 +153,27 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		tile->y = tile->y - tile->height / 2;
 		boxTiles.push_back(tile);
 		space->addStaticActor(tile);
+		break;
+	}
+	case '@': {
+		Tile* tile = new Tile("res/grass.png", x, y, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case '8': {
+		Tile* tile = new Tile("res/dirt.png", x, y, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case 'T': {
+		Tile* tile = new Tile("res/tree.png", x, y, 105, 182, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addDynamicActor(tile);
 		break;
 	}
 	}

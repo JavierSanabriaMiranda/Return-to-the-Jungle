@@ -5,6 +5,10 @@ Tile::Tile(string filename, float x, float y, Game* game)
 
 }
 
+Tile::Tile(string filename, float x, float y, float width, float height, Game* game)
+	: Actor(filename, x, y, width, height, game) {
+}
+
 void Tile::setVY(float vy) {
 	this->vy = 0;
 }
