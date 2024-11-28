@@ -7,6 +7,9 @@ Tucan::Tucan(float x, float y, Game* game)
 	orientation = game->orientationRight;
 	state = game->stateMoving;
 
+	smallIcon = "res/tucan_icono_pequeno.png";
+	bigIcon = "res/tucan_icono_grande.png";
+
 	aJumpingRight = new Animation("res/Tucan_saltando_derecha.png",
 		width, height, 560, 43, 6, 8, true, game);
 	aJumpingLeft = new Animation("res/Tucan_saltando_izquierda.png",
@@ -46,4 +49,12 @@ void Tucan::jump() {
 	onAir = true;
 	remainingJumps--;
 	jumpCoolDown = 10;
+}
+
+string Tucan::getBigIcon() {
+	return bigIcon;
+}
+
+string Tucan::getSmallIcon() {
+	return smallIcon;
 }

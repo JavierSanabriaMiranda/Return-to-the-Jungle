@@ -7,6 +7,9 @@ Mono::Mono(float x, float y, Game* game)
 	orientation = game->orientationRight;
 	state = game->stateMoving;
 
+	bigIcon = "res/mono_icono_grande.png";
+	smallIcon = "res/mono_icono_pequeno.png";
+
 	aJumpingRight = new Animation("res/Mono_saltando_derecha.png",
 		width, height, 185, 45, 6, 3, true, game);
 	aJumpingLeft = new Animation("res/Mono_saltando_izquierda.png",
@@ -126,4 +129,12 @@ void Mono::update() {
 			animation = aClimbingLeft;
 		}
 	}
+}
+
+string Mono::getBigIcon() {
+	return bigIcon;
+}
+
+string Mono::getSmallIcon() {
+	return smallIcon;
 }

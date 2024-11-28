@@ -7,6 +7,9 @@ Elefante::Elefante(float x, float y, Game* game)
 	orientation = game->orientationRight;
 	state = game->stateMoving;
 
+	bigIcon = "res/elefante_icono_grande.png";
+	smallIcon = "res/elefante_icono_pequeno.png";
+
 	aJumpingRight = new Animation("res/Elefante_saltando_derecha.png",
 		width, height, 406, 85, 6, 3, true, game);
 	aJumpingLeft = new Animation("res/Elefante_saltando_izquierda.png",
@@ -28,4 +31,12 @@ void Elefante::jump() {
 		vy = jumpQuantity;
 		onAir = true;
 	}
+}
+
+string Elefante::getBigIcon() {
+	return bigIcon;
+}
+
+string Elefante::getSmallIcon() {
+	return smallIcon;
 }

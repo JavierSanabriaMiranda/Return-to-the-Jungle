@@ -7,6 +7,9 @@ Capibara::Capibara(float x, float y, Game* game)
 	orientation = game->orientationRight;
 	state = game->stateMoving;
 
+	bigIcon = "res/capibara_icono_grande.png";
+	smallIcon = "res/capibara_icono_pequeno.png";
+
 	aJumpingRight = new Animation("res/Capibara_saltando_derecha.png",
 		width, height, 182, 50, 6, 3, true, game);
 	aJumpingLeft = new Animation("res/Capibara_saltando_izquierda.png",
@@ -152,4 +155,12 @@ void Capibara::jump() {
 	else {
 		Player::jump();
 	}
+}
+
+string Capibara::getBigIcon() {
+	return bigIcon;
+}
+
+string Capibara::getSmallIcon() {
+	return smallIcon;
 }

@@ -7,6 +7,9 @@ Serpiente::Serpiente(float x, float y, Game* game)
 	orientation = game->orientationRight;
 	state = game->stateMoving;
 
+	bigIcon = "res/serpiente_icono_grande.png";
+	smallIcon = "res/serpiente_icono_pequeno.png";
+
 	aJumpingRight = new Animation("res/Serpiente_saltando_derecha.png",
 		width, height, 342, 25, 6, 3, true, game);
 	aJumpingLeft = new Animation("res/Serpiente_saltando_izquierda.png",
@@ -32,4 +35,12 @@ void Serpiente::jump() {
 		vy = jumpQuantity;
 		onAir = true;
 	}
+}
+
+string Serpiente::getBigIcon() {
+	return bigIcon;
+}
+
+string Serpiente::getSmallIcon() {
+	return smallIcon;
 }

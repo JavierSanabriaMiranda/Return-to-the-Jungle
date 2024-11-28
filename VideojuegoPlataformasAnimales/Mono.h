@@ -11,6 +11,8 @@ public:
 	void setVY(float vy) override;
 	void update() override;
 	void moveX(float axis) override;
+	string getBigIcon() override;
+	string getSmallIcon() override;
 
 	Animation* aClimbingRight;
 	Animation* aClimbingLeft;
