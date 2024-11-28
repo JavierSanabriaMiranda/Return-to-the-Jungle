@@ -3,9 +3,11 @@
 
 class Elefante : public Player
 {
-public :
+public:
 	Elefante(float x, float y, Game* game);
 	void jump() override;
+	string getBigIcon() override;
+	string getSmallIcon() override;
 	string getType() override;
 	void breakBox() override;
 	void update() override;

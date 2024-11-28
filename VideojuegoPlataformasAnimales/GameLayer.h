@@ -7,6 +7,7 @@
 #include "Tile.h"
 #include "VineTile.h"
 #include "Audio.h"
+#include "CharacterIcon.h"
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -46,6 +47,10 @@ public:
 	Actor* citySign; // Elemento de final de nivel
 	Tile* checkpoint; // Elemento de checkpoint
 	bool takenCheckpoint; // Marca si se ha cogido o no el checkpoint
+
+	CharacterIcon* firstCharacterIcon;
+	CharacterIcon* secondCharacterIcon;
+	CharacterIcon* thirdCharacterIcon;
 
 	Audio* audioBackground;
 

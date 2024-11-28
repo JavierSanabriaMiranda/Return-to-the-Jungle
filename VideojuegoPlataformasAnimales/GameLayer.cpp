@@ -15,9 +15,18 @@ GameLayer::GameLayer(Game* game)
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 	space = new Space(1);
+	firstCharacterIcon = new CharacterIcon("", WIDTH * 0.1, HEIGHT * 0.1, 80, 80, game);
+	secondCharacterIcon = new CharacterIcon("", WIDTH * 0.23, HEIGHT * 0.13, 60, 60, game);
+	thirdCharacterIcon = new CharacterIcon("", WIDTH * 0.36, HEIGHT * 0.13, 60, 60, game);
+
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
 }
 
 void GameLayer::firstPrepareGameLayer() {
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
+
 	getMainCharacterForLevel();
 	init();
 }
@@ -28,9 +37,6 @@ void GameLayer::init() {
 	tiles.clear();
 	waterTiles.clear();
 	vineTiles.clear();
-
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
@@ -86,7 +92,8 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = characters[0];
+		if (player == nullptr)
+			player = characters[0];
 		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
@@ -209,7 +216,7 @@ void GameLayer::update() {
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
 		// Vaciamos la lista de personajes
-		for (int i = 0; i < sizeof(characters); i++) {
+		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
 		getMainCharacterForLevel();
@@ -375,6 +382,10 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
+	firstCharacterIcon->draw();
+	secondCharacterIcon->draw();
+	thirdCharacterIcon->draw();
+
 	//for (auto const& collectable : collectables) {
 	//	collectable->draw(scrollX);
 	//}
@@ -477,6 +488,19 @@ void GameLayer::addCharacter(Player* character) {
 		if (characters[i] == nullptr) {
 			characters[i] = character;
 			space->addDynamicActor(character);
+
+			switch (i) {
+			case 0:
+				firstCharacterIcon->setIcon(character->getBigIcon());
+				break;
+			case 1:
+				secondCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			case 2:
+				thirdCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			}
+
 			break;
 		}
 	}
@@ -486,12 +510,17 @@ void GameLayer::changeCharacter() {
 	int x = player->x;
 	int y = player->y;
 
+	firstCharacterIcon->setIcon(characters[nextCharacter]->getBigIcon());
+	thirdCharacterIcon->setIcon(player->getSmallIcon());
+
 	player = characters[nextCharacter];
 	player->setLocation(x, y);
 	nextCharacter++;
 	if (nextCharacter > 2) {
 		nextCharacter = 0;
 	}
+
+	secondCharacterIcon->setIcon(characters[nextCharacter]->getSmallIcon());
 }
 
 void GameLayer::getMainCharacterForLevel() {

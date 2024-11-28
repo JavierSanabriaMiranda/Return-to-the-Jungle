@@ -10,6 +10,8 @@ public :
 	void moveDown() override;
 	string getType() override;
 	void setVY(float vy) override;
+	string getBigIcon() override;
+	string getSmallIcon() override;
 
 	Animation* aSleep;
 	int timeToSleep = 50;

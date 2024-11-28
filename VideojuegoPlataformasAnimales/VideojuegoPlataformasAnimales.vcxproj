@@ -206,6 +206,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="BoxTile.h" />
     <ClInclude Include="Capibara.h" />
+    <ClInclude Include="CharacterIcon.h" />
     <ClInclude Include="CharacterSelectionLayer.h" />
     <ClInclude Include="Elefante.h" />
     <ClInclude Include="Game.h" />
@@ -229,6 +230,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="BoxTile.cpp" />
     <ClCompile Include="Capibara.cpp" />
+    <ClCompile Include="CharacterIcon.cpp" />
     <ClCompile Include="CharacterSelectionLayer.cpp" />
     <ClCompile Include="Elefante.cpp" />
     <ClCompile Include="Game.cpp" />
