@@ -209,3 +209,31 @@ void Space::removeDynamicActor(Actor* actor) {
 void Space::removeStaticActor(Actor* actor) {
     staticActors.remove(actor);
 }
+
+bool Space::canTransformInto(Actor* actor, int x, int y) {
+	int width = actor->width;
+	int height = actor->height;
+
+	for (auto const& staticAct : staticActors) {
+        // si contiene la esquina inferior derecha
+		if (staticAct->containsPoint(x + width / 2, y)) {
+			return false;
+		}
+		// si contiene la esquina inferior izquierda
+		if (staticAct->containsPoint(x - width / 2, y)) {
+			return false;
+		}
+		// si contiene la esquina superior derecha
+		if (staticAct->containsPoint(x + width / 2, y - height)) {
+			return false;
+		}
+		// si contiene la esquina superior izquierda
+		if (staticAct->containsPoint(x - width / 2, y - height)) {
+			return false;
+		}
+        if (staticAct->isOverlap(actor)) {
+            return false;
+        }
+	}
+	return true;
+}

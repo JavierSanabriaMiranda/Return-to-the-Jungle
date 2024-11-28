@@ -8,6 +8,7 @@
 #include "VineTile.h"
 #include "Audio.h"
 #include "CharacterIcon.h"
+#include "ForbiddenSymbol.h"
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -51,6 +52,8 @@ public:
 	CharacterIcon* firstCharacterIcon;
 	CharacterIcon* secondCharacterIcon;
 	CharacterIcon* thirdCharacterIcon;
+
+	ForbiddenSymbol* forbiddenSymbol;
 
 	Audio* audioBackground;
 

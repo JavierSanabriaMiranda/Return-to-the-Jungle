@@ -45,7 +45,7 @@ public:
 
 	int const orientationRight = 1;
 	int const orientationLeft = 2;
-	int currentLevel = 0;
+	int currentLevel = 2;
 	int finalLevel = 2;
 
 	int input;

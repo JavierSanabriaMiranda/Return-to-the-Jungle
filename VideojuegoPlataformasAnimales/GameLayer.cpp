@@ -21,6 +21,8 @@ GameLayer::GameLayer(Game* game)
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
+
+	forbiddenSymbol = new ForbiddenSymbol(WIDTH * 0.9, HEIGHT * 0.9, game);
 }
 
 void GameLayer::firstPrepareGameLayer() {
@@ -419,9 +421,7 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
-	firstCharacterIcon->draw();
-	secondCharacterIcon->draw();
-	thirdCharacterIcon->draw();
+	
 
 	//for (auto const& collectable : collectables) {
 	//	collectable->draw(scrollX);
@@ -446,7 +446,10 @@ void GameLayer::draw() {
 	//backgroundCollectables->draw();
 	//textCollectables->draw();
 
-
+	firstCharacterIcon->draw();
+	secondCharacterIcon->draw();
+	thirdCharacterIcon->draw();
+	forbiddenSymbol->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }
@@ -544,20 +547,30 @@ void GameLayer::addCharacter(Player* character) {
 }
 
 void GameLayer::changeCharacter() {
+	int nextPlayerHeight = characters[nextCharacter]->height;
+
 	int x = player->x;
-	int y = player->y;
+	int y = player->y - nextPlayerHeight/2;
+	characters[nextCharacter]->setLocation(x, y);
+	if (space->canTransformInto(characters[nextCharacter], x, y)) {
+		
 
-	firstCharacterIcon->setIcon(characters[nextCharacter]->getBigIcon());
-	thirdCharacterIcon->setIcon(player->getSmallIcon());
+		firstCharacterIcon->setIcon(characters[nextCharacter]->getBigIcon());
+		thirdCharacterIcon->setIcon(player->getSmallIcon());
 
-	player = characters[nextCharacter];
-	player->setLocation(x, y);
-	nextCharacter++;
-	if (nextCharacter > 2) {
-		nextCharacter = 0;
+		player = characters[nextCharacter];
+		player->setLocation(x, y);
+		player->setVY(0);
+		nextCharacter++;
+		if (nextCharacter > 2) {
+			nextCharacter = 0;
+		}
+
+		secondCharacterIcon->setIcon(characters[nextCharacter]->getSmallIcon());
 	}
-
-	secondCharacterIcon->setIcon(characters[nextCharacter]->getSmallIcon());
+	else {
+		forbiddenSymbol->show();
+	}
 }
 
 void GameLayer::getMainCharacterForLevel() {

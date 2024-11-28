@@ -15,6 +15,7 @@ public:
 	void addStaticActor(Actor* actor);
 	void removeDynamicActor(Actor* actor);
 	void removeStaticActor(Actor* actor);
+	bool canTransformInto(Actor* actor, int x, int y);
 	float gravity;
 	list<Actor*> dynamicActors;
 	list<Actor*> staticActors;
