@@ -90,7 +90,8 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = characters[0];
+		if (player == nullptr)
+			player = characters[0];
 		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
@@ -206,7 +207,7 @@ void GameLayer::update() {
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
 		// Vaciamos la lista de personajes
-		for (int i = 0; i < sizeof(characters); i++) {
+		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
 		getMainCharacterForLevel();
