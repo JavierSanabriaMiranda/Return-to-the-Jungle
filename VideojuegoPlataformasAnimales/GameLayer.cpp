@@ -13,12 +13,17 @@ GameLayer::GameLayer(Game* game)
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 	space = new Space(1);
-}
-
-void GameLayer::firstPrepareGameLayer() {
 	firstCharacterIcon = new CharacterIcon("", WIDTH * 0.1, HEIGHT * 0.1, 80, 80, game);
 	secondCharacterIcon = new CharacterIcon("", WIDTH * 0.23, HEIGHT * 0.13, 60, 60, game);
 	thirdCharacterIcon = new CharacterIcon("", WIDTH * 0.36, HEIGHT * 0.13, 60, 60, game);
+
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
+}
+
+void GameLayer::firstPrepareGameLayer() {
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
 
 	getMainCharacterForLevel();
 	init();
@@ -30,9 +35,6 @@ void GameLayer::init() {
 	tiles.clear();
 	waterTiles.clear();
 	vineTiles.clear();
-
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
