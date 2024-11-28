@@ -62,5 +62,6 @@ public:
 private:
 	void getMainCharacterForLevel();
 	void changeCharacter();
+	void addCharactersToSpace();
 };
 

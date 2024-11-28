@@ -33,10 +33,15 @@ void GameLayer::firstPrepareGameLayer() {
 
 
 void GameLayer::init() {
+	space = new Space(1);
+
+	addCharactersToSpace();
+
 	scrollX = 0;
 	tiles.clear();
 	waterTiles.clear();
 	vineTiles.clear();
+	boxTiles.clear();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
@@ -541,3 +546,10 @@ void GameLayer::getMainCharacterForLevel() {
 	}
 }
 
+void GameLayer::addCharactersToSpace() {
+	for (int i = 0; i < 3; i++) {
+		if (characters[i] != nullptr) {
+			space->addDynamicActor(characters[i]);
+		}
+	}
+}
