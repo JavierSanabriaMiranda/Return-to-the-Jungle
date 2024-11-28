@@ -213,6 +213,7 @@ void Space::removeStaticActor(Actor* actor) {
 bool Space::canTransformInto(Actor* actor, int x, int y) {
 	int width = actor->width;
 	int height = actor->height;
+    y = y + height / 2;
 
 	for (auto const& staticAct : staticActors) {
         // si contiene la esquina inferior derecha
