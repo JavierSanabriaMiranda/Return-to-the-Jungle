@@ -7,6 +7,7 @@
 #include "Tile.h"
 #include "VineTile.h"
 #include "Audio.h"
+#include "Enemy.h"
 
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
@@ -52,6 +53,8 @@ public:
 	int controlMoveX = 0;
 
 	int nextCharacter = 1;
+
+	list<Enemy*> enemies;
 
 private:
 	void getMainCharacterForLevel();

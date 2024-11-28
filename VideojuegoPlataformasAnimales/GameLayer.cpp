@@ -133,7 +133,11 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(fondoTile);
 		break;
 	}
-
+	case 'E': {
+		Enemy* enemy = new Enemy(x, y, game);
+		enemies.push_back(enemy);
+		break;
+	}
 	}
 }
 
@@ -278,20 +282,20 @@ void GameLayer::update() {
 	//	collectable->update();
 	//}
 
-	//for (auto const& enemy : enemies) {
-	//	enemy->update();
-	//}
+	for (auto const& enemy : enemies) {
+		enemy->update();
+	}
 
-	//// Colisiones
-	//for (auto const& enemy : enemies) {
-	//	if (player->isOverlap(enemy)) {
-	//		player->loseLife();
-	//		if (player->lifes <= 0) {
-	//			init();
-	//			return;
-	//		}
-	//	}
-	//}
+	// Colisiones
+	for (auto const& enemy : enemies) {
+		if (player->isOverlap(enemy)) {
+			player->loseLife();
+			if (player->lifes <= 0) {
+				init();
+				return;
+			}
+		}
+	}
 
 	//// Colisiones , Player - Collectable
 	//list<Collectable*> deleteCollectables;
@@ -352,9 +356,9 @@ void GameLayer::draw() {
 	for (auto const& tile : waterTiles) {
 		tile->draw(scrollX);
 	}
-	//for (auto const& enemy : enemies) {
-	//	enemy->draw(scrollX);
-	//}
+	for (auto const& enemy : enemies) {
+		enemy->draw(scrollX);
+	}
 
 	//backgroundPoints->draw();
 	//textPoints->draw();
