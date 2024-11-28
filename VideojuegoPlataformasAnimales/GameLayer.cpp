@@ -176,6 +176,13 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(tile);
 		break;
 	}
+	case 'K': {
+		Tile* tile = new Tile("res/banco.png", x, y, 89, 55, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
 	}
 }
 
