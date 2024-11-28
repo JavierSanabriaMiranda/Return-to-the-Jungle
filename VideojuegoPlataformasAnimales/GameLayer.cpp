@@ -235,6 +235,10 @@ void GameLayer::update() {
 		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
+
+		// Se deselecciona el personaje
+		player = nullptr;
+
 		// Seleccionamos al personaje "protagonista" del nivel
 		getMainCharacterForLevel();
 		
