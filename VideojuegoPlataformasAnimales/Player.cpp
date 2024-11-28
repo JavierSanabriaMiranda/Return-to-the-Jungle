@@ -139,3 +139,7 @@ string Player::getType() {
 void Player::moveDown() {
 	//Do nothing
 }
+
+void Player::breakBox() {
+	//Do nothing
+}

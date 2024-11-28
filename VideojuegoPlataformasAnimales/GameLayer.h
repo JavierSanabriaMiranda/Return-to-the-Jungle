@@ -37,6 +37,7 @@ public:
 	list<Tile*> tiles;
 	list<Tile*> waterTiles;
 	list<VineTile*> vineTiles;
+	list<Tile*> boxTiles;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;

@@ -16,6 +16,7 @@ public:
 	void draw(float scrollX = 0) override; // Va a sobrescribir
 	void loseLife();
 	void setLocation(float x, float y);
+	void virtual breakBox();
 	
 	int lifes = 3;
 	int invulnerableTime = 0;

@@ -7,6 +7,8 @@
 #include "VineTile.h"
 #include "WaterTile.h"
 #include "WaterTileFondo.h"
+#include "BoxTile.h"
+#include "Elefante.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -133,7 +135,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(fondoTile);
 		break;
 	}
-
+	case 'B': {
+		Tile* tile = new BoxTile(x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		boxTiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
 	}
 }
 
@@ -250,6 +259,29 @@ void GameLayer::update() {
 		}
 	}
 
+	//Colisiones con las cajas
+	list<Tile*> deleteCajas;
+	for (auto const& caja : boxTiles) {
+		if (caja->isOverlap(player)) {
+			Elefante* elefante = (Elefante*)player;
+			if (player->getType() == "Elefante" && elefante->breaking) {
+				deleteCajas.push_back(caja);
+			}
+		}
+	}
+
+	// Eliminar las cajas que los elefantes rompen
+	for (auto const& caja : deleteCajas) {
+		boxTiles.remove(caja);
+		space->removeStaticActor(caja);
+	}
+	deleteCajas.clear();
+
+	for (auto const& caja : deleteCajas) {
+			boxTiles.remove(caja);
+	}
+	deleteCajas.clear();
+
 	// Jugador se cae
 	if (player->y > HEIGHT + 80) {
 		init();
@@ -273,6 +305,7 @@ void GameLayer::update() {
 
 		}
 	}
+
 
 	//for (auto const& collectable : collectables) {
 	//	collectable->update();
@@ -352,6 +385,9 @@ void GameLayer::draw() {
 	for (auto const& tile : waterTiles) {
 		tile->draw(scrollX);
 	}
+	for (auto const& tile : boxTiles) {
+		tile->draw(scrollX);
+	}
 	//for (auto const& enemy : enemies) {
 	//	enemy->draw(scrollX);
 	//}
@@ -392,6 +428,9 @@ void GameLayer::keysToControls(SDL_Event event) {
 			break;
 		case SDLK_c: // cambiar personaje
 			changeCharacter();
+			break;
+		case SDLK_SPACE: // romper caja
+			player->breakBox();
 			break;
 		}
 
