@@ -16,6 +16,10 @@ GameLayer::GameLayer(Game* game)
 }
 
 void GameLayer::firstPrepareGameLayer() {
+	firstCharacterIcon = new CharacterIcon("", WIDTH * 0.1, HEIGHT * 0.1, 80, 80, game);
+	secondCharacterIcon = new CharacterIcon("", WIDTH * 0.23, HEIGHT * 0.13, 60, 60, game);
+	thirdCharacterIcon = new CharacterIcon("", WIDTH * 0.36, HEIGHT * 0.13, 60, 60, game);
+
 	getMainCharacterForLevel();
 	init();
 }
@@ -342,6 +346,10 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
+	firstCharacterIcon->draw();
+	secondCharacterIcon->draw();
+	thirdCharacterIcon->draw();
+
 	//for (auto const& collectable : collectables) {
 	//	collectable->draw(scrollX);
 	//}
@@ -438,6 +446,19 @@ void GameLayer::addCharacter(Player* character) {
 		if (characters[i] == nullptr) {
 			characters[i] = character;
 			space->addDynamicActor(character);
+
+			switch (i) {
+			case 0:
+				firstCharacterIcon->setIcon(character->getBigIcon());
+				break;
+			case 1:
+				secondCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			case 2:
+				thirdCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			}
+
 			break;
 		}
 	}
@@ -447,12 +468,17 @@ void GameLayer::changeCharacter() {
 	int x = player->x;
 	int y = player->y;
 
+	firstCharacterIcon->setIcon(characters[nextCharacter]->getBigIcon());
+	thirdCharacterIcon->setIcon(player->getSmallIcon());
+
 	player = characters[nextCharacter];
 	player->setLocation(x, y);
 	nextCharacter++;
 	if (nextCharacter > 2) {
 		nextCharacter = 0;
 	}
+
+	secondCharacterIcon->setIcon(characters[nextCharacter]->getSmallIcon());
 }
 
 void GameLayer::getMainCharacterForLevel() {
