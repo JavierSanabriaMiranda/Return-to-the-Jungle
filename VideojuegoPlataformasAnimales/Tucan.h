@@ -11,7 +11,7 @@ public:
 	string getBigIcon() override;
 	string getSmallIcon() override;
 
-	int remainingJumps = 2;
+	int remainingJumps = 1;
 	int jumpCoolDown = 10;
 };
 

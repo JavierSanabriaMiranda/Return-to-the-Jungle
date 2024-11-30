@@ -30,7 +30,7 @@ void Tucan::update() {
 	Player::update();
 	if (collisionDown == true) {
 		onAir = false;
-		remainingJumps = 2;
+		remainingJumps = 1;
 	}
 	else {
 		onAir = true;
