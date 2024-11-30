@@ -10,6 +10,7 @@
 #include "CharacterIcon.h"
 #include "ForbiddenSymbol.h"
 
+
 #include <fstream> // Leer ficheros
 #include <sstream> // Leer líneas / String
 #include <list>
@@ -40,6 +41,8 @@ public:
 	list<Tile*> waterTiles;
 	list<VineTile*> vineTiles;
 	list<Tile*> boxTiles;
+	list<Tile*> collectables;
+	int numCollectables = 0;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;
@@ -52,6 +55,10 @@ public:
 	CharacterIcon* firstCharacterIcon;
 	CharacterIcon* secondCharacterIcon;
 	CharacterIcon* thirdCharacterIcon;
+
+	CharacterIcon* osito1;
+	CharacterIcon* osito2;
+	CharacterIcon* osito3;
 
 	ForbiddenSymbol* forbiddenSymbol;
 
@@ -66,5 +73,6 @@ private:
 	void getMainCharacterForLevel();
 	void changeCharacter();
 	void addCharactersToSpace();
+	void dibujarOsitos(int numOsitos);
 };
 

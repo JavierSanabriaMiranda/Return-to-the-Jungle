@@ -108,6 +108,9 @@
     <ClInclude Include="ForbiddenSymbol.h">
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
+    <ClInclude Include="TeddyTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -181,6 +184,9 @@
     </ClCompile>
     <ClCompile Include="ForbiddenSymbol.cpp">
       <Filter>Archivos de origen\actores</Filter>
+    </ClCompile>
+    <ClCompile Include="TeddyTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

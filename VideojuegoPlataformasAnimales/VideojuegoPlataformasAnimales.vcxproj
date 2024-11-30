@@ -218,6 +218,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Space.h" />
+    <ClInclude Include="TeddyTile.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tucan.h" />
     <ClInclude Include="VineTile.h" />
@@ -244,6 +245,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Serpiente.cpp" />
     <ClCompile Include="Space.cpp" />
+    <ClCompile Include="TeddyTile.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tucan.cpp" />
     <ClCompile Include="VineTile.cpp" />

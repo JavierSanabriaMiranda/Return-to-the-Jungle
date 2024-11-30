@@ -9,6 +9,7 @@
 #include "WaterTileFondo.h"
 #include "BoxTile.h"
 #include "Elefante.h"
+#include "TeddyTile.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -18,6 +19,10 @@ GameLayer::GameLayer(Game* game)
 	firstCharacterIcon = new CharacterIcon("", WIDTH * 0.1, HEIGHT * 0.1, 80, 80, game);
 	secondCharacterIcon = new CharacterIcon("", WIDTH * 0.23, HEIGHT * 0.13, 60, 60, game);
 	thirdCharacterIcon = new CharacterIcon("", WIDTH * 0.36, HEIGHT * 0.13, 60, 60, game);
+
+	osito1 = new CharacterIcon("", WIDTH * 0.76, HEIGHT * 0.13, 35, 35, game);
+	osito2 = new CharacterIcon("", WIDTH * 0.83, HEIGHT * 0.13, 35, 35, game);
+	osito3 = new CharacterIcon("", WIDTH * 0.90, HEIGHT * 0.13, 35, 35, game);
 
 	audioBackground = new Audio("res/musica_ambiente.mp3", true);
 	audioBackground->play();
@@ -38,12 +43,14 @@ void GameLayer::init() {
 	space = new Space(1);
 
 	addCharactersToSpace();
+	dibujarOsitos(numCollectables);
 
 	scrollX = 0;
 	tiles.clear();
 	waterTiles.clear();
 	vineTiles.clear();
 	boxTiles.clear();
+	collectables.clear();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
@@ -182,6 +189,13 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		Tile* tile = new Tile("res/banco.png", x, y, 89, 55, game);
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'C': {
+		Tile* tile = new TeddyTile(x, y, game);
+		tile->y = tile->y - tile->height / 2;
+		collectables.push_back(tile);
 		space->addDynamicActor(tile);
 		break;
 	}
@@ -373,26 +387,19 @@ void GameLayer::update() {
 	//}
 
 	//// Colisiones , Player - Collectable
-	//list<Collectable*> deleteCollectables;
-	//for (auto const& collectable : collectables) {
-	//	if (collectable->isOverlap(player)) {
-	//		bool cInList = std::find(deleteCollectables.begin(),
-	//			deleteCollectables.end(),
-	//			collectable) != deleteCollectables.end();
+	list<Tile*> deleteCollectables;
+	for (auto const& collectable : collectables) {
+		if (collectable->isOverlap(player)) {
+			deleteCollectables.push_back(collectable);
+			numCollectables++;
+			dibujarOsitos(numCollectables);
+		}
+	}
 
-	//		if (!cInList) {
-	//			deleteCollectables.push_back(collectable);
-	//		}
-	//		numCollectables++;
-	//		textCollectables->content = to_string(numCollectables);
-	//	}
-	//}
-
-	//for (auto const& collectable : deleteCollectables) {
-	//	collectables.remove(collectable);
-	//}
-	//deleteCollectables.clear();
-
+	for (auto const& collectable : deleteCollectables) {
+		collectables.remove(collectable);
+	}
+	deleteCollectables.clear();
 	
 }
 
@@ -436,6 +443,9 @@ void GameLayer::draw() {
 	for (auto const& tile : boxTiles) {
 		tile->draw(scrollX);
 	}
+	for (auto const& tile : collectables) {
+		tile->draw(scrollX);
+	}	
 	//for (auto const& enemy : enemies) {
 	//	enemy->draw(scrollX);
 	//}
@@ -450,6 +460,10 @@ void GameLayer::draw() {
 	secondCharacterIcon->draw();
 	thirdCharacterIcon->draw();
 	forbiddenSymbol->draw();
+
+	osito1->draw();
+	osito2->draw();
+	osito3->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }
@@ -592,5 +606,27 @@ void GameLayer::addCharactersToSpace() {
 		if (characters[i] != nullptr) {
 			space->addDynamicActor(characters[i]);
 		}
+	}
+}
+
+void GameLayer::dibujarOsitos(int numCollectables) {
+	switch (numCollectables) {
+	case 0:
+		osito1->setIcon("res/Tile_teddy_transparente.png");
+		osito2->setIcon("res/Tile_teddy_transparente.png");
+		osito3->setIcon("res/Tile_teddy_transparente.png");
+		break;
+	case 1:
+		osito1->setIcon("res/Tile_teddy.png");
+		break;
+	case 2:
+		osito1->setIcon("res/Tile_teddy.png");
+		osito2->setIcon("res/Tile_teddy.png");
+		break;
+	case 3:
+		osito1->setIcon("res/Tile_teddy.png");
+		osito2->setIcon("res/Tile_teddy.png");
+		osito3->setIcon("res/Tile_teddy.png");
+		break;
 	}
 }
