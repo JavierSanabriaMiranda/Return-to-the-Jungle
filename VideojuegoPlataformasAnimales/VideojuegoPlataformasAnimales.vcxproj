@@ -208,6 +208,7 @@
     <ClInclude Include="Capibara.h" />
     <ClInclude Include="CharacterIcon.h" />
     <ClInclude Include="CharacterSelectionLayer.h" />
+    <ClInclude Include="Coche.h" />
     <ClInclude Include="Elefante.h" />
     <ClInclude Include="ForbiddenSymbol.h" />
     <ClInclude Include="Enemy.h" />
@@ -235,6 +236,7 @@
     <ClCompile Include="Capibara.cpp" />
     <ClCompile Include="CharacterIcon.cpp" />
     <ClCompile Include="CharacterSelectionLayer.cpp" />
+    <ClCompile Include="Coche.cpp" />
     <ClCompile Include="Elefante.cpp" />
     <ClCompile Include="ForbiddenSymbol.cpp" />
     <ClCompile Include="Enemy.cpp" />

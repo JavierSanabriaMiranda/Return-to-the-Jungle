@@ -1,7 +1,7 @@
 #include "Enemy.h"
 
 Enemy::Enemy(string img, float x, float y, int width, int height, Game* game)
-	: Actor(img, x, y, 40, 25, game) {
+	: Actor(img, x, y, width, height, game) {
 
 	vx = 1;
 	vy = 3;

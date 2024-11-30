@@ -10,6 +10,7 @@
 #include "WaterTileFondo.h"
 #include "BoxTile.h"
 #include "Elefante.h"
+#include "Coche.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -190,6 +191,12 @@ void GameLayer::loadMapObject(char character, float x, float y)
 	}
 	case 'G': {
 		Enemy* enemy = new Gaviota(x, y, game);
+		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
+		break;
+	}
+	case 'R': {
+		Enemy* enemy = new Coche(x, y, game);
 		enemies.push_back(enemy);
 		space->addDynamicActor(enemy);
 		break;
