@@ -4,6 +4,7 @@
 #include "Tucan.h"
 #include "Capibara.h"
 #include "Mono.h"
+#include "Gaviota.h"
 #include "VineTile.h"
 #include "WaterTile.h"
 #include "WaterTileFondo.h"
@@ -31,6 +32,8 @@ void GameLayer::init() {
 	audioBackground->play();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
+
+	enemies.clear();
 
 	loadMap(to_string(game->currentLevel));
 }
@@ -133,9 +136,10 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(fondoTile);
 		break;
 	}
-	case 'E': {
-		Enemy* enemy = new Enemy(x, y, game);
+	case 'G': {
+		Enemy* enemy = new Gaviota(x, y, game);
 		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
 		break;
 	}
 	}
@@ -289,11 +293,8 @@ void GameLayer::update() {
 	// Colisiones
 	for (auto const& enemy : enemies) {
 		if (player->isOverlap(enemy)) {
-			player->loseLife();
-			if (player->lifes <= 0) {
-				init();
-				return;
-			}
+			init();
+			return;
 		}
 	}
 
