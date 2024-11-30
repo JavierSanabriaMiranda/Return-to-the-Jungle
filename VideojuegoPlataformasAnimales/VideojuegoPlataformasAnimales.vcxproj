@@ -204,9 +204,12 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="BoxTile.h" />
     <ClInclude Include="Capibara.h" />
+    <ClInclude Include="CharacterIcon.h" />
     <ClInclude Include="CharacterSelectionLayer.h" />
     <ClInclude Include="Elefante.h" />
+    <ClInclude Include="ForbiddenSymbol.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLayer.h" />
@@ -228,9 +231,12 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="BoxTile.cpp" />
     <ClCompile Include="Capibara.cpp" />
+    <ClCompile Include="CharacterIcon.cpp" />
     <ClCompile Include="CharacterSelectionLayer.cpp" />
     <ClCompile Include="Elefante.cpp" />
+    <ClCompile Include="ForbiddenSymbol.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLayer.cpp" />

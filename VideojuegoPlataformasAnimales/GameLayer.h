@@ -7,6 +7,8 @@
 #include "Tile.h"
 #include "VineTile.h"
 #include "Audio.h"
+#include "CharacterIcon.h"
+#include "ForbiddenSymbol.h"
 #include "Enemy.h"
 
 #include <fstream> // Leer ficheros
@@ -38,6 +40,7 @@ public:
 	list<Tile*> tiles;
 	list<Tile*> waterTiles;
 	list<VineTile*> vineTiles;
+	list<Tile*> boxTiles;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;
@@ -46,6 +49,12 @@ public:
 	Actor* citySign; // Elemento de final de nivel
 	Tile* checkpoint; // Elemento de checkpoint
 	bool takenCheckpoint; // Marca si se ha cogido o no el checkpoint
+
+	CharacterIcon* firstCharacterIcon;
+	CharacterIcon* secondCharacterIcon;
+	CharacterIcon* thirdCharacterIcon;
+
+	ForbiddenSymbol* forbiddenSymbol;
 
 	Audio* audioBackground;
 
@@ -59,5 +68,6 @@ public:
 private:
 	void getMainCharacterForLevel();
 	void changeCharacter();
+	void addCharactersToSpace();
 };
 

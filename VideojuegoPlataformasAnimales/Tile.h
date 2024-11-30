@@ -5,6 +5,7 @@ class Tile : public Actor
 {
 public:
 	Tile(string filename, float x, float y, Game* game);
+	Tile(string filename, float x, float y, float width, float height, Game* game);
 
 	void setVY(float vy) override;
 };

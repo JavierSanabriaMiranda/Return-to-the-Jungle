@@ -84,6 +84,30 @@
     <ClInclude Include="Mono.h">
       <Filter>Archivos de encabezado\actores\personajes</Filter>
     </ClInclude>
+    <ClInclude Include="BoxTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Serpiente.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="Elefante.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="Capibara.h">
+      <Filter>Archivos de encabezado\actores\personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterTileFondo.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterIcon.h">
+      <Filter>Archivos de encabezado\actores</Filter>
+    </ClInclude>
+    <ClInclude Include="ForbiddenSymbol.h">
+      <Filter>Archivos de encabezado\actores</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -133,6 +157,30 @@
     </ClCompile>
     <ClCompile Include="Mono.cpp">
       <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Elefante.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Capibara.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="Serpiente.cpp">
+      <Filter>Archivos de origen\actores\personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterTileFondo.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterIcon.cpp">
+      <Filter>Archivos de origen\actores</Filter>
+    </ClCompile>
+    <ClCompile Include="ForbiddenSymbol.cpp">
+      <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

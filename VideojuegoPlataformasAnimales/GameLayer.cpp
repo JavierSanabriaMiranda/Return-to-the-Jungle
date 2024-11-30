@@ -8,28 +8,43 @@
 #include "VineTile.h"
 #include "WaterTile.h"
 #include "WaterTileFondo.h"
+#include "BoxTile.h"
+#include "Elefante.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
 	//llama al constructor del padre : Layer(renderer)
 	pause = true;
 	space = new Space(1);
+	firstCharacterIcon = new CharacterIcon("", WIDTH * 0.1, HEIGHT * 0.1, 80, 80, game);
+	secondCharacterIcon = new CharacterIcon("", WIDTH * 0.23, HEIGHT * 0.13, 60, 60, game);
+	thirdCharacterIcon = new CharacterIcon("", WIDTH * 0.36, HEIGHT * 0.13, 60, 60, game);
+
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
+
+	forbiddenSymbol = new ForbiddenSymbol(WIDTH * 0.9, HEIGHT * 0.9, game);
 }
 
 void GameLayer::firstPrepareGameLayer() {
+	audioBackground = new Audio("res/musica_ambiente.mp3", true);
+	audioBackground->play();
+
 	getMainCharacterForLevel();
 	init();
 }
 
 
 void GameLayer::init() {
+	space = new Space(1);
+
+	addCharactersToSpace();
+
 	scrollX = 0;
 	tiles.clear();
 	waterTiles.clear();
 	vineTiles.clear();
-
-	audioBackground = new Audio("res/musica_ambiente.mp3", true);
-	audioBackground->play();
+	boxTiles.clear();
 
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 
@@ -87,7 +102,8 @@ void GameLayer::loadMapObject(char character, float x, float y)
 {
 	switch (character) {
 	case '1': {
-		player = characters[0];
+		if (player == nullptr)
+			player = characters[0];
 		player->setLocation(x, y);
 		// modificación para empezar a contar desde el suelo.
 		player->y = player->y - player->height / 2;
@@ -116,7 +132,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'L': {
-		VineTile* tile = new VineTile( x, y, game);
+		VineTile* tile = new VineTile(x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -134,6 +150,42 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		waterTiles.push_back(tile);
 		space->addDynamicActor(tile);
 		space->addDynamicActor(fondoTile);
+		break;
+	}
+	case 'B': {
+		Tile* tile = new BoxTile(x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		boxTiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case '@': {
+		Tile* tile = new Tile("res/grass.png", x, y, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case '8': {
+		Tile* tile = new Tile("res/dirt.png", x, y, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
+	case 'T': {
+		Tile* tile = new Tile("res/tree.png", x, y, 105, 182, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'K': {
+		Tile* tile = new Tile("res/banco.png", x, y, 89, 55, game);
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addDynamicActor(tile);
 		break;
 	}
 	case 'G': {
@@ -208,7 +260,7 @@ void GameLayer::update() {
 	if (citySign->isOverlap(player)) {
 		game->currentLevel++;
 		// Vaciamos la lista de personajes
-		for (int i = 0; i < sizeof(characters); i++) {
+		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
 		getMainCharacterForLevel();
@@ -227,6 +279,10 @@ void GameLayer::update() {
 		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
+
+		// Se deselecciona el personaje
+		player = nullptr;
+
 		// Seleccionamos al personaje "protagonista" del nivel
 		getMainCharacterForLevel();
 		
@@ -258,6 +314,29 @@ void GameLayer::update() {
 		}
 	}
 
+	//Colisiones con las cajas
+	list<Tile*> deleteCajas;
+	for (auto const& caja : boxTiles) {
+		if (caja->isOverlap(player)) {
+			Elefante* elefante = (Elefante*)player;
+			if (player->getType() == "Elefante" && elefante->breaking) {
+				deleteCajas.push_back(caja);
+			}
+		}
+	}
+
+	// Eliminar las cajas que los elefantes rompen
+	for (auto const& caja : deleteCajas) {
+		boxTiles.remove(caja);
+		space->removeStaticActor(caja);
+	}
+	deleteCajas.clear();
+
+	for (auto const& caja : deleteCajas) {
+			boxTiles.remove(caja);
+	}
+	deleteCajas.clear();
+
 	// Jugador se cae
 	if (player->y > HEIGHT + 80) {
 		init();
@@ -281,6 +360,7 @@ void GameLayer::update() {
 
 		}
 	}
+
 
 	//for (auto const& collectable : collectables) {
 	//	collectable->update();
@@ -347,6 +427,8 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
+	
+
 	//for (auto const& collectable : collectables) {
 	//	collectable->draw(scrollX);
 	//}
@@ -357,6 +439,12 @@ void GameLayer::draw() {
 	for (auto const& tile : waterTiles) {
 		tile->draw(scrollX);
 	}
+	for (auto const& tile : boxTiles) {
+		tile->draw(scrollX);
+	}
+	//for (auto const& enemy : enemies) {
+	//	enemy->draw(scrollX);
+	//}
 	for (auto const& enemy : enemies) {
 		enemy->draw(scrollX);
 	}
@@ -367,7 +455,10 @@ void GameLayer::draw() {
 	//backgroundCollectables->draw();
 	//textCollectables->draw();
 
-
+	firstCharacterIcon->draw();
+	secondCharacterIcon->draw();
+	thirdCharacterIcon->draw();
+	forbiddenSymbol->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza
 }
@@ -397,6 +488,9 @@ void GameLayer::keysToControls(SDL_Event event) {
 			break;
 		case SDLK_c: // cambiar personaje
 			changeCharacter();
+			break;
+		case SDLK_SPACE: // romper caja
+			player->breakBox();
 			break;
 		}
 
@@ -443,20 +537,48 @@ void GameLayer::addCharacter(Player* character) {
 		if (characters[i] == nullptr) {
 			characters[i] = character;
 			space->addDynamicActor(character);
+
+			switch (i) {
+			case 0:
+				firstCharacterIcon->setIcon(character->getBigIcon());
+				break;
+			case 1:
+				secondCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			case 2:
+				thirdCharacterIcon->setIcon(character->getSmallIcon());
+				break;
+			}
+
 			break;
 		}
 	}
 }
 
 void GameLayer::changeCharacter() {
-	int x = player->x;
-	int y = player->y;
+	int nextPlayerHeight = characters[nextCharacter]->height;
 
-	player = characters[nextCharacter];
-	player->setLocation(x, y);
-	nextCharacter++;
-	if (nextCharacter > 2) {
-		nextCharacter = 0;
+	int x = player->x;
+	int y = player->y - nextPlayerHeight/2;
+	characters[nextCharacter]->setLocation(x, y);
+	if (space->canTransformInto(characters[nextCharacter], x, y)) {
+		
+
+		firstCharacterIcon->setIcon(characters[nextCharacter]->getBigIcon());
+		thirdCharacterIcon->setIcon(player->getSmallIcon());
+
+		player = characters[nextCharacter];
+		player->setLocation(x, y);
+		player->setVY(0);
+		nextCharacter++;
+		if (nextCharacter > 2) {
+			nextCharacter = 0;
+		}
+
+		secondCharacterIcon->setIcon(characters[nextCharacter]->getSmallIcon());
+	}
+	else {
+		forbiddenSymbol->show();
 	}
 }
 
@@ -474,3 +596,10 @@ void GameLayer::getMainCharacterForLevel() {
 	}
 }
 
+void GameLayer::addCharactersToSpace() {
+	for (int i = 0; i < 3; i++) {
+		if (characters[i] != nullptr) {
+			space->addDynamicActor(characters[i]);
+		}
+	}
+}

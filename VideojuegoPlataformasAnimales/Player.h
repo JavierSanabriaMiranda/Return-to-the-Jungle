@@ -16,6 +16,9 @@ public:
 	void draw(float scrollX = 0) override; // Va a sobrescribir
 	void loseLife();
 	void setLocation(float x, float y);
+	void virtual breakBox();
+	string virtual getBigIcon() = 0;
+	string virtual getSmallIcon() = 0;
 	
 	int lifes = 3;
 	int invulnerableTime = 0;
@@ -24,6 +27,10 @@ public:
 	int orientation;
 	int state;
 	int jumpQuantity = -16;
+
+	string smallIcon; // Imagen que se muestra del personaje arriba izquierda del HUD cuando es el seleccionado
+	string bigIcon; // Imagen que se muestra del personaje arriba izquierda del HUD cuando no es el seleccionado
+
 	Animation* aIdleRight;
 	Animation* aIdleLeft;
 	Animation* aJumpingRight;
