@@ -38,7 +38,6 @@ void Gaviota::update() {
 			animation = aMovingLeft;
 		}
 	}
-
 	// Aumentamos la distancia recorrida horizontalmente
 	distanciaRecorridaX += abs(vx);
 

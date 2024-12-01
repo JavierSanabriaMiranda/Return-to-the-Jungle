@@ -11,4 +11,3 @@ public:
 	float distanciaX;
 	float distanciaRecorridaX;
 };
-

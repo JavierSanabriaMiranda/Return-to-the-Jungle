@@ -37,6 +37,12 @@
     <Filter Include="Archivos de encabezado\actores\tiles">
       <UniqueIdentifier>{53ad96ec-abe3-4bf6-a161-bbb3ddac1ef1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\actores\enemigos">
+      <UniqueIdentifier>{eb386923-b03b-425a-a330-07dcdbfd1203}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\actores\enemigos">
+      <UniqueIdentifier>{f3718cf6-0cc7-4034-8a23-9772c0cf6ba9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -109,6 +115,21 @@
       <Filter>Archivos de encabezado\actores</Filter>
     </ClInclude>
     <ClInclude Include="TeddyTile.h">
+      <Filter>Archivos de encabezado\actores\tiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Gaviota.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Coche.h">
+      <Filter>Archivos de encabezado\actores\enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFinalLayer.h">
+      <Filter>Archivos de encabezado\layers</Filter>
+    </ClInclude>
+    <ClInclude Include="TunnelTile.h">
       <Filter>Archivos de encabezado\actores\tiles</Filter>
     </ClInclude>
   </ItemGroup>
@@ -186,6 +207,21 @@
       <Filter>Archivos de origen\actores</Filter>
     </ClCompile>
     <ClCompile Include="TeddyTile.cpp">
+      <Filter>Archivos de origen\actores\tiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Coche.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Gaviota.cpp">
+      <Filter>Archivos de origen\actores\enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFinalLayer.cpp">
+      <Filter>Archivos de origen\layers</Filter>
+    </ClCompile>
+    <ClCompile Include="TunnelTile.cpp">
       <Filter>Archivos de origen\actores\tiles</Filter>
     </ClCompile>
   </ItemGroup>

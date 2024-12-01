@@ -19,4 +19,3 @@ public:
 	Background* background;
 	Actor* button;
 };
-

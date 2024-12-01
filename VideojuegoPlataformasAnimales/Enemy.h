@@ -14,7 +14,6 @@ public:
 	int state;
 	int orientation;
 	float vxIntelligence;
-
 	//Animation* aDying;
 	Animation* aMovingRight;
 	Animation* aMovingLeft;
