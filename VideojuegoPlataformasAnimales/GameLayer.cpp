@@ -45,6 +45,8 @@ void GameLayer::firstPrepareGameLayer() {
 void GameLayer::init() {
 	space = new Space(1);
 
+	nextCharacter = 1;
+
 	addCharactersToSpace();
 
 	scrollX = 0;
