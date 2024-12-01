@@ -32,6 +32,7 @@
     <ProjectGuid>{aea363b6-d934-4c46-8e6f-f4bb3af3e980}</ProjectGuid>
     <RootNamespace>VideojuegoPlataformasAnimales</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ReturnToTheJungle</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
