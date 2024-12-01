@@ -43,7 +43,6 @@ void GameLayer::init() {
 	space = new Space(1);
 
 	addCharactersToSpace();
-	dibujarOsitos(numCollectables);
 
 	scrollX = 0;
 	tiles.clear();
@@ -51,9 +50,21 @@ void GameLayer::init() {
 	vineTiles.clear();
 	boxTiles.clear();
 	collectables.clear();
-
+	
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
-
+	if (!takenCheckpoint) {
+		numCollectables = 0;
+		numeroOsosCargados = 0;
+		dibujarOsitos(numCollectables);
+	}
+	else {
+		for (int i = 0; i < 3; i++) {
+			collectablesTaken[i] = collectableTakenAtCheckpoint[i];
+		}
+		numeroOsosCargados = 0;
+		numCollectables = numCollectablesAtCheckpoint;
+		dibujarOsitos(numCollectablesAtCheckpoint);
+	}
 	loadMap(to_string(game->currentLevel));
 }
 
@@ -193,7 +204,10 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'C': {
-		Tile* tile = new TeddyTile(x, y, game);
+		numeroOsosCargados++;
+		if (collectablesTaken[numeroOsosCargados-1] && takenCheckpoint)
+			break;
+		Tile* tile = new TeddyTile(x, y, game, numeroOsosCargados);
 		tile->y = tile->y - tile->height / 2;
 		collectables.push_back(tile);
 		space->addDynamicActor(tile);
@@ -295,8 +309,14 @@ void GameLayer::update() {
 	}
 
 	// Obtenido el checkpoint
-	if (checkpoint->isOverlap(player)) {
+	if (checkpoint->isOverlap(player) && takenCheckpoint == false) {
 		takenCheckpoint = true;
+		// Cuando se coge el checkpoint se guarda el estado de los collecionables en ese momento
+		for (int i = 0; i < 3; i++) {
+			collectableTakenAtCheckpoint[i] = collectablesTaken[i];
+		}
+		numeroOsosCargadosAtCheckpoint = numeroOsosCargados;
+		numCollectablesAtCheckpoint = numCollectables;
 	}
 
 	//Colisiones con el agua
@@ -391,6 +411,7 @@ void GameLayer::update() {
 	for (auto const& collectable : collectables) {
 		if (collectable->isOverlap(player)) {
 			deleteCollectables.push_back(collectable);
+			collectablesTaken[((TeddyTile*)collectable)->getNumeroOso() - 1] = true;
 			numCollectables++;
 			dibujarOsitos(numCollectables);
 		}
@@ -399,7 +420,6 @@ void GameLayer::update() {
 	for (auto const& collectable : deleteCollectables) {
 		collectables.remove(collectable);
 	}
-	deleteCollectables.clear();
 	
 }
 
@@ -618,10 +638,13 @@ void GameLayer::dibujarOsitos(int numCollectables) {
 		break;
 	case 1:
 		osito1->setIcon("res/Tile_teddy.png");
+		osito2->setIcon("res/Tile_teddy_transparente.png");
+		osito3->setIcon("res/Tile_teddy_transparente.png");
 		break;
 	case 2:
 		osito1->setIcon("res/Tile_teddy.png");
 		osito2->setIcon("res/Tile_teddy.png");
+		osito3->setIcon("res/Tile_teddy_transparente.png");
 		break;
 	case 3:
 		osito1->setIcon("res/Tile_teddy.png");

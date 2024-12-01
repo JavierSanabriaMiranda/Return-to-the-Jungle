@@ -42,7 +42,12 @@ public:
 	list<VineTile*> vineTiles;
 	list<Tile*> boxTiles;
 	list<Tile*> collectables;
+	bool collectablesTaken[3];
 	int numCollectables = 0;
+	int numeroOsosCargados = 0;
+	bool collectableTakenAtCheckpoint[3];
+	int numeroOsosCargadosAtCheckpoint = 0;
+	int numCollectablesAtCheckpoint = 0;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;
