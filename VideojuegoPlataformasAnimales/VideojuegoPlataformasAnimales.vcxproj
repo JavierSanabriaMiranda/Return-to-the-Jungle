@@ -223,6 +223,7 @@
     <ClInclude Include="Space.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tucan.h" />
+    <ClInclude Include="TunnelTile.h" />
     <ClInclude Include="VineTile.h" />
     <ClInclude Include="WaterTile.h" />
     <ClInclude Include="WaterTileFondo.h" />
@@ -252,6 +253,7 @@
     <ClCompile Include="Space.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tucan.cpp" />
+    <ClCompile Include="TunnelTile.cpp" />
     <ClCompile Include="VineTile.cpp" />
     <ClCompile Include="WaterTile.cpp" />
     <ClCompile Include="WaterTileFondo.cpp" />

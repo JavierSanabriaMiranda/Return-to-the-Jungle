@@ -12,3 +12,7 @@ Tile::Tile(string filename, float x, float y, float width, float height, Game* g
 void Tile::setVY(float vy) {
 	this->vy = 0;
 }
+
+void Tile::update() {
+	// Do nothing
+}

@@ -11,6 +11,7 @@
 #include "BoxTile.h"
 #include "Elefante.h"
 #include "Coche.h"
+#include "TunnelTile.h"
 
 GameLayer::GameLayer(Game* game)
 	: Layer(game) {
@@ -201,6 +202,24 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addDynamicActor(enemy);
 		break;
 	}
+	case 'U': {
+		TunnelTile* tile = new TunnelTile("izquierda", x, y, game, this);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		tunnelTilesL.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'D': {
+		TunnelTile* tile = new TunnelTile("derecha", x, y, game, this);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		tunnelTilesD.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
 	}
 }
 
@@ -383,6 +402,10 @@ void GameLayer::update() {
 			init();
 			return;
 		}
+	}
+
+	for (auto const& tunnel : tunnelTilesD) {
+		tunnel->update();
 	}
 
 	//// Colisiones , Player - Collectable
