@@ -23,6 +23,7 @@ void CharacterSelectionLayer::init() {
 	buttonSerpiente = new Actor("res/seleccion_serpiente.png", WIDTH * 0.8, HEIGHT * 0.4, 100, 100, game);
 	buttonCapibara = new Actor("res/seleccion_capibara.png", WIDTH * 0.35, HEIGHT * 0.75, 100, 100, game);
 	buttonMono = new Actor("res/seleccion_mono.png", WIDTH * 0.65, HEIGHT * 0.75, 100, 100, game);
+	titleSelectCharacters = new Actor("res/letras_select_character.png", WIDTH * 0.5, HEIGHT * 0.12, 399, 120, game);
 
 	selectedCapibara = false;
 	selectedElefante = false;
@@ -42,6 +43,7 @@ void CharacterSelectionLayer::draw() {
 	buttonSerpiente->draw();
 	buttonCapibara->draw();
 	buttonMono->draw();
+	titleSelectCharacters->draw();
 
 	SDL_RenderPresent(game->renderer); // Renderiza NO PUEDE FALTAR
 }
