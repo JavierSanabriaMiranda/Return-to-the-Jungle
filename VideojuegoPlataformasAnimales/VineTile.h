@@ -5,6 +5,6 @@
 class VineTile : public Tile
 {
 public:
-	VineTile(float x, float y, Game* game);
+	VineTile(string orientation, float x, float y, Game* game);
 };
 

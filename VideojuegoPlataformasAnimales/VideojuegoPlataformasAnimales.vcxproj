@@ -208,10 +208,13 @@
     <ClInclude Include="Capibara.h" />
     <ClInclude Include="CharacterIcon.h" />
     <ClInclude Include="CharacterSelectionLayer.h" />
+    <ClInclude Include="Coche.h" />
     <ClInclude Include="Elefante.h" />
     <ClInclude Include="ForbiddenSymbol.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameLayer.h" />
+    <ClInclude Include="Gaviota.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="MenuLayer.h" />
     <ClInclude Include="Mono.h" />
@@ -221,6 +224,7 @@
     <ClInclude Include="TeddyTile.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tucan.h" />
+    <ClInclude Include="TunnelTile.h" />
     <ClInclude Include="VineTile.h" />
     <ClInclude Include="WaterTile.h" />
     <ClInclude Include="WaterTileFondo.h" />
@@ -234,10 +238,13 @@
     <ClCompile Include="Capibara.cpp" />
     <ClCompile Include="CharacterIcon.cpp" />
     <ClCompile Include="CharacterSelectionLayer.cpp" />
+    <ClCompile Include="Coche.cpp" />
     <ClCompile Include="Elefante.cpp" />
     <ClCompile Include="ForbiddenSymbol.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameLayer.cpp" />
+    <ClCompile Include="Gaviota.cpp" />
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuLayer.cpp" />
@@ -248,6 +255,7 @@
     <ClCompile Include="TeddyTile.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tucan.cpp" />
+    <ClCompile Include="TunnelTile.cpp" />
     <ClCompile Include="VineTile.cpp" />
     <ClCompile Include="WaterTile.cpp" />
     <ClCompile Include="WaterTileFondo.cpp" />

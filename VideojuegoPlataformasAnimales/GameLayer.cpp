@@ -4,11 +4,14 @@
 #include "Tucan.h"
 #include "Capibara.h"
 #include "Mono.h"
+#include "Gaviota.h"
 #include "VineTile.h"
 #include "WaterTile.h"
 #include "WaterTileFondo.h"
 #include "BoxTile.h"
 #include "Elefante.h"
+#include "Coche.h"
+#include "TunnelTile.h"
 #include "TeddyTile.h"
 
 GameLayer::GameLayer(Game* game)
@@ -50,7 +53,8 @@ void GameLayer::init() {
 	vineTiles.clear();
 	boxTiles.clear();
 	collectables.clear();
-	
+	enemies.clear();
+
 	background = new Background("res/fondo_0.png", WIDTH * 0.5, HEIGHT * 0.5, -1, game);
 	if (!takenCheckpoint) {
 		numCollectables = 0;
@@ -65,6 +69,9 @@ void GameLayer::init() {
 		numCollectables = numCollectablesAtCheckpoint;
 		dibujarOsitos(numCollectablesAtCheckpoint);
 	}
+
+	
+
 	loadMap(to_string(game->currentLevel));
 }
 
@@ -147,7 +154,16 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'L': {
-		VineTile* tile = new VineTile(x, y, game);
+		VineTile* tile = new VineTile("derecha", x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		vineTiles.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'V': {
+		VineTile* tile = new VineTile("izquierda", x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
@@ -200,6 +216,36 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		Tile* tile = new Tile("res/banco.png", x, y, 89, 55, game);
 		tile->y = tile->y - tile->height / 2;
 		tiles.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'G': {
+		Enemy* enemy = new Gaviota(x, y, game);
+		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
+		break;
+	}
+	case 'R': {
+		Enemy* enemy = new Coche(x, y, game);
+		enemies.push_back(enemy);
+		space->addDynamicActor(enemy);
+		break;
+	}
+	case 'U': {
+		TunnelTile* tile = new TunnelTile("izquierda", x, y, game, this);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		tunnelTilesL.push_back(tile);
+		space->addDynamicActor(tile);
+		break;
+	}
+	case 'D': {
+		TunnelTile* tile = new TunnelTile("derecha", x, y, game, this);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		tunnelTilesD.push_back(tile);
 		space->addDynamicActor(tile);
 		break;
 	}
@@ -391,20 +437,21 @@ void GameLayer::update() {
 	//	collectable->update();
 	//}
 
-	//for (auto const& enemy : enemies) {
-	//	enemy->update();
-	//}
+	for (auto const& enemy : enemies) {
+		enemy->update();
+	}
 
-	//// Colisiones
-	//for (auto const& enemy : enemies) {
-	//	if (player->isOverlap(enemy)) {
-	//		player->loseLife();
-	//		if (player->lifes <= 0) {
-	//			init();
-	//			return;
-	//		}
-	//	}
-	//}
+	// Colisiones
+	for (auto const& enemy : enemies) {
+		if (player->isOverlap(enemy)) {
+			init();
+			return;
+		}
+	}
+
+	for (auto const& tunnel : tunnelTilesD) {
+		tunnel->update();
+	}
 
 	//// Colisiones , Player - Collectable
 	list<Tile*> deleteCollectables;
@@ -463,12 +510,19 @@ void GameLayer::draw() {
 	for (auto const& tile : boxTiles) {
 		tile->draw(scrollX);
 	}
+	for (auto const& tile : tunnelTilesD) {
+		tile->draw(scrollX);
+	}
+	for (auto const& tile : tunnelTilesL) {
+		tile->draw(scrollX);
+	}
 	for (auto const& tile : collectables) {
 		tile->draw(scrollX);
-	}	
-	//for (auto const& enemy : enemies) {
-	//	enemy->draw(scrollX);
-	//}
+	}
+
+	for (auto const& enemy : enemies) {
+		enemy->draw(scrollX);
+	}
 
 	//backgroundPoints->draw();
 	//textPoints->draw();

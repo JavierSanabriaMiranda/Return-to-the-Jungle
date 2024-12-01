@@ -9,6 +9,7 @@
 #include "Audio.h"
 #include "CharacterIcon.h"
 #include "ForbiddenSymbol.h"
+#include "Enemy.h"
 
 
 #include <fstream> // Leer ficheros
@@ -48,6 +49,8 @@ public:
 	bool collectableTakenAtCheckpoint[3];
 	int numeroOsosCargadosAtCheckpoint = 0;
 	int numCollectablesAtCheckpoint = 0;
+	list<Tile*> tunnelTilesD;
+	list<Tile*> tunnelTilesL;
 	bool controlContinue = false;
 	Player* characters[3];
 	Player* player;
@@ -73,6 +76,8 @@ public:
 	int controlMoveX = 0;
 
 	int nextCharacter = 1;
+
+	list<Enemy*> enemies;
 
 private:
 	void getMainCharacterForLevel();
