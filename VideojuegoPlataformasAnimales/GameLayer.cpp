@@ -147,7 +147,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case '0': {
-		checkpoint = new Tile("res/checkpoint.png", x, y, game);
+		checkpoint = new Tile("res/checkpoint.png", x, y,29, 70, game);
 		// modificación para empezar a contar desde el suelo.
 		checkpoint->y = checkpoint->y - checkpoint->height / 2;
 		space->addDynamicActor(checkpoint);
