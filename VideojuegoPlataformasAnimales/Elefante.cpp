@@ -22,10 +22,10 @@ Elefante::Elefante(float x, float y, Game* game)
 		673, 85, 6, 6, true, game);
 	aIdleLeft = new Animation("res/Elefante_estatico_izquierda.png", width, height,
 		673, 85, 6, 6, true, game);
-	aBreakingLeft = new Animation("res/Elefante_saltando_izquierda.png", width, height,
-		673, 85, 6, 6, true, game);
-	aBreakingRight = new Animation("res/Elefante_saltando_derecha.png", width, height,
-		673, 85, 6, 6, true, game);
+	aBreakingLeft = new Animation("res/Elefante_trompetazo_izquierda.png", width, height,
+		877, 85, 2, 6, true, game);
+	aBreakingRight = new Animation("res/Elefante_trompetazo_derecha.png", width, height,
+		877, 85, 2, 6, true, game);
 
 	animation = aRunningRight;
 }
@@ -82,7 +82,7 @@ void Elefante::update() {
 		state = stateBreaking;
 	}
 	else {
-		timeBreaking = 15;
+		timeBreaking = 20;
 	}
 	if (timeBreaking <= 0) {
 		breaking = false;
