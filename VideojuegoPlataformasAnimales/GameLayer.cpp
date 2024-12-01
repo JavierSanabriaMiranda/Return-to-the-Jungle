@@ -137,6 +137,14 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		space->addStaticActor(tile);
 		break;
 	}
+	case 'A': {
+		Tile* tile = new Tile("res/andamio.png", x, y, game);
+		// modificación para empezar a contar desde el suelo.
+		tile->y = tile->y - tile->height / 2;
+		tiles.push_back(tile);
+		space->addStaticActor(tile);
+		break;
+	}
 	case 'S': {
 		citySign = new Actor("res/Cartel.png", x, y, 45, 53, game);
 		// modificación para empezar a contar desde el suelo.
