@@ -45,8 +45,6 @@ void GameLayer::firstPrepareGameLayer() {
 void GameLayer::init() {
 	space = new Space(1);
 
-	nextCharacter = 1;
-
 	addCharactersToSpace();
 
 	scrollX = 0;
@@ -333,6 +331,7 @@ void GameLayer::update() {
 		for (int i = 0; i < 3; i++) {
 			characters[i] = nullptr;
 		}
+		nextCharacter = 1;
 		getMainCharacterForLevel();
 		// Abrimos la pantalla de selección de personajes
 		game->characterSelectionLayer->init();
