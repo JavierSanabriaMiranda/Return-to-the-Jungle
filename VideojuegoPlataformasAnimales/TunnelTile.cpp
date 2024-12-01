@@ -3,13 +3,13 @@
 #include "Enemy.h"
 
 TunnelTile::TunnelTile(string orientacion, float x, float y, Game* game, GameLayer* gameLayer)
-	: Tile("res/Tile_tunel_" + orientacion + ".png", x, y, 65, 92, game) {
+	: Tile("res/Tile_tunel_" + orientacion + ".png", x, y, 65, 96, game) {
 
 	vy = 0;
 	this->gameLayer = gameLayer;
 
 	timeSinceLastCar = 0.0f; // Inicializamos el tiempo transcurrido
-	carGenerationInterval = 3.0f; // Generar un coche cada 5 segundos (por ejemplo)
+	carGenerationInterval = 2.0f; // Generar un coche cada 5 segundos (por ejemplo)
 }
 
 void TunnelTile::update() {
@@ -48,7 +48,7 @@ void TunnelTile::update() {
 }
 
 void TunnelTile::generateCar() {
-	Enemy* enemy = new Coche(x, y, game);
+	Enemy* enemy = new Coche(x-50, y, game);
 	this->gameLayer->enemies.push_back(enemy);
 	this->gameLayer->space->addDynamicActor(enemy);
 }

@@ -472,9 +472,13 @@ void GameLayer::draw() {
 	for (auto const& tile : boxTiles) {
 		tile->draw(scrollX);
 	}
-	//for (auto const& enemy : enemies) {
-	//	enemy->draw(scrollX);
-	//}
+	for (auto const& tile : tunnelTilesD) {
+		tile->draw(scrollX);
+	}
+	for (auto const& tile : tunnelTilesL) {
+		tile->draw(scrollX);
+	}
+
 	for (auto const& enemy : enemies) {
 		enemy->draw(scrollX);
 	}
