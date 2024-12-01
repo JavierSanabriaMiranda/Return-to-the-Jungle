@@ -22,11 +22,6 @@ void Player::update() {
 		state = game->stateMoving;
 	}
 
-
-	if (invulnerableTime > 0) {
-		invulnerableTime--;
-	}
-
 	bool endAnimation = animation->update();
 
 	if (collisionDown == true) {
@@ -85,30 +80,13 @@ void Player::moveY(float axis) {
 }
 
 void Player::draw(float scrollX) {
-	if (invulnerableTime == 0) {
-		animation->draw(x - scrollX, y);
-	}
-	else {
-		if (invulnerableTime % 10 >= 0 && invulnerableTime % 10 <= 5) {
-			animation->draw(x - scrollX, y);
-		}
-	}
+	animation->draw(x - scrollX, y);
 }
 
 void Player::jump() {
 	if (!onAir) {
 		vy = jumpQuantity;
 		onAir = true;
-	}
-}
-
-void Player::loseLife() {
-	if (invulnerableTime <= 0) {
-		if (lifes > 0) {
-			lifes--;
-			invulnerableTime = 100;
-			// 100 actualizaciones 
-		}
 	}
 }
 

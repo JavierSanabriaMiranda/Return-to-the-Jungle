@@ -70,8 +70,6 @@ void GameLayer::init() {
 		dibujarOsitos(numCollectablesAtCheckpoint);
 	}
 
-	
-
 	loadMap(to_string(game->currentLevel));
 }
 
@@ -311,9 +309,6 @@ void GameLayer::processControls() {
 	else {
 
 	}
-
-
-
 }
 
 void GameLayer::update() {
@@ -438,11 +433,6 @@ void GameLayer::update() {
 		}
 	}
 
-
-	//for (auto const& collectable : collectables) {
-	//	collectable->update();
-	//}
-
 	for (auto const& enemy : enemies) {
 		enemy->update();
 	}
@@ -505,12 +495,6 @@ void GameLayer::draw() {
 		tile->draw(scrollX);
 	}
 
-	
-
-	//for (auto const& collectable : collectables) {
-	//	collectable->draw(scrollX);
-	//}
-
 	citySign->draw(scrollX);
 	checkpoint->draw(scrollX);
 	player->draw(scrollX);
@@ -533,12 +517,6 @@ void GameLayer::draw() {
 	for (auto const& enemy : enemies) {
 		enemy->draw(scrollX);
 	}
-
-	//backgroundPoints->draw();
-	//textPoints->draw();
-
-	//backgroundCollectables->draw();
-	//textCollectables->draw();
 
 	firstCharacterIcon->draw();
 	secondCharacterIcon->draw();

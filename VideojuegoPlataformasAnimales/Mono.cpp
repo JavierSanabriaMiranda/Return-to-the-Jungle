@@ -70,11 +70,6 @@ void Mono::update() {
 		state = stateClimbing;
 	}
 
-
-	if (invulnerableTime > 0) {
-		invulnerableTime--;
-	}
-
 	bool endAnimation = animation->update();
 
 	if (collisionDown == true) {

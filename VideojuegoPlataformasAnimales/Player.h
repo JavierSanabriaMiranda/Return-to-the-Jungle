@@ -14,14 +14,11 @@ public:
 	void virtual moveX(float axis);
 	void moveY(float axis);
 	void draw(float scrollX = 0) override; // Va a sobrescribir
-	void loseLife();
 	void setLocation(float x, float y);
 	void virtual breakBox();
 	string virtual getBigIcon() = 0;
 	string virtual getSmallIcon() = 0;
-	
-	int lifes = 3;
-	int invulnerableTime = 0;
+
 	bool onAir;
 	bool moving;
 	int orientation;

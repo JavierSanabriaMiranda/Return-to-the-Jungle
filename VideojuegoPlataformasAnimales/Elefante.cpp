@@ -58,11 +58,6 @@ void Elefante::update() {
 		state = game->stateMoving;
 	}
 
-
-	if (invulnerableTime > 0) {
-		invulnerableTime--;
-	}
-
 	bool endAnimation = animation->update();
 
 	if (collisionDown == true) {

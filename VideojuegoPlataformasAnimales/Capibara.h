@@ -13,9 +13,6 @@ public :
 	string getBigIcon() override;
 	string getSmallIcon() override;
 
-	Animation* aSleep;
-	int timeToSleep = 50;
-	int const stateStill = -1; //quieto
 	bool canSwim;
 	Animation* aSwimmingRight;
 	Animation* aSwimmingLeft;

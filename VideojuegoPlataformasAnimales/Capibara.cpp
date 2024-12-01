@@ -34,22 +34,6 @@ Capibara::Capibara(float x, float y, Game* game)
 }
 
 void Capibara::update() {
-	//Para la capibara dormida
-	/*if (vx == 0 && !onAir) {
-		state = this->stateStill;
-	} 
-	if (state == stateStill) {
-		this->timeToSleep--;
-	}
-	else {
-		timeToSleep = 50;
-	}
-
-	if (timeToSleep <= 0)
-		animation = aSleep;*/
-
-
-
 
 	// En el aire y moviéndose, PASA a estar saltando
 	if (onAir && (state == game->stateMoving || state == stateSwim)) {
@@ -58,10 +42,6 @@ void Capibara::update() {
 	// No está en el aire y estaba saltando, PASA a moverse
 	if (!onAir && (state == game->stateJumping || state == stateSwim)) {
 		state = game->stateMoving;
-	}
-
-	if (invulnerableTime > 0) {
-		invulnerableTime--;
 	}
 
 	bool endAnimation = animation->update();
