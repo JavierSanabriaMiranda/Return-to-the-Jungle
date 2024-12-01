@@ -10,6 +10,7 @@
 #include "CharacterIcon.h"
 #include "ForbiddenSymbol.h"
 #include "Enemy.h"
+#include "BoxTile.h"
 
 
 #include <fstream> // Leer ficheros
@@ -41,7 +42,7 @@ public:
 	list<Tile*> tiles;
 	list<Tile*> waterTiles;
 	list<VineTile*> vineTiles;
-	list<Tile*> boxTiles;
+	list<BoxTile*> boxTiles;
 	list<Tile*> collectables;
 	bool collectablesTaken[3];
 	int numCollectables = 0;

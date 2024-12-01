@@ -184,7 +184,7 @@ void GameLayer::loadMapObject(char character, float x, float y)
 		break;
 	}
 	case 'B': {
-		Tile* tile = new BoxTile(x, y, game);
+		BoxTile* tile = new BoxTile(x, y, game);
 		// modificación para empezar a contar desde el suelo.
 		tile->y = tile->y - tile->height / 2;
 		boxTiles.push_back(tile);
@@ -386,16 +386,21 @@ void GameLayer::update() {
 	}
 
 	//Colisiones con las cajas
-	list<Tile*> deleteCajas;
+	list<BoxTile*> deleteCajas;
 	for (auto const& caja : boxTiles) {
 		if (caja->isOverlap(player)) {
 			Elefante* elefante = (Elefante*)player;
 			if (player->getType() == "Elefante" && elefante->breaking) {
-				deleteCajas.push_back(caja);
+				caja->state = caja->stateBreaking; // 1 = stateBreaking
 			}
 		}
 	}
 
+	for (auto const& caja : boxTiles) {
+		if (caja->state == caja->stateBroken) {
+			deleteCajas.push_back(caja); 
+		}
+	}
 	// Eliminar las cajas que los elefantes rompen
 	for (auto const& caja : deleteCajas) {
 		boxTiles.remove(caja);
@@ -416,6 +421,8 @@ void GameLayer::update() {
 	player->update();
 	space->update();
 	background->update();
+
+	
 	
 	// Colisión con lianas
 	for (auto const& vineTile : vineTiles) {
@@ -451,6 +458,10 @@ void GameLayer::update() {
 
 	for (auto const& tunnel : tunnelTilesD) {
 		tunnel->update();
+	}
+
+	for (auto const& box : boxTiles) {
+		box->update();
 	}
 
 	//// Colisiones , Player - Collectable
