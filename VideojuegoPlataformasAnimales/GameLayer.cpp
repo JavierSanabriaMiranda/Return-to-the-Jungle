@@ -110,7 +110,7 @@ void GameLayer::loadMap(string name) {
 
 	if (takenCheckpoint) {
 		player->x = checkpoint->x;
-		player->y = checkpoint->y;
+		player->y = checkpoint->y - player->height/2;
 	}
 	for (Player* character : characters) {
 		if (character == nullptr) {
