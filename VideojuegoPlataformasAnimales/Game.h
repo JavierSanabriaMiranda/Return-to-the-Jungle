@@ -35,6 +35,7 @@ public:
 	Layer* layer;
 	Layer* menuLayer;
 	Layer* characterSelectionLayer;
+	Layer* menuFinalLayer;
 
 
 	int const stateMoving = 1;

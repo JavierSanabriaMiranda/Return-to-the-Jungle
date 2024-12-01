@@ -333,9 +333,8 @@ void GameLayer::update() {
 		game->characterSelectionLayer->init();
 		game->layer = game->characterSelectionLayer;
 		if (game->currentLevel > game->finalLevel) {
-			game->currentLevel = 0;
-			message = new Actor("res/mensaje_ganar.png", WIDTH * 0.5, HEIGHT * 0.5,
-				WIDTH, HEIGHT, game);
+			game->layer = game->menuFinalLayer;
+			return;
 		}
 		
 		pause = true;

@@ -2,6 +2,7 @@
 #include "GameLayer.h"
 #include "MenuLayer.h"
 #include "CharacterSelectionLayer.h"
+#include "MenuFinalLayer.h"
 
 Game::Game() {
 	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
@@ -16,6 +17,8 @@ Game::Game() {
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
 	menuLayer = new MenuLayer(this);
+	menuFinalLayer = new MenuFinalLayer(this);
+
 	GameLayer* layerForGame = new GameLayer(this);
 	gameLayer = layerForGame;
 	characterSelectionLayer = new CharacterSelectionLayer(this, layerForGame);
