@@ -40,6 +40,18 @@ Todos los sprites de personajes y enemigos han sido desarrollados a mano utiliza
 
 Los niveles se han desarrollado siguiendo un diseño basado en tiles que se representan como caracteres en ficheros de texto
 
+<section>
+  <h2>Controles</h2>
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: 0;">
+    <img src="docs/multimedia/WASD.png" alt="Teclas de Movimiento" width="200px" heigh="auto"/>
+    <img src="docs/multimedia/C.png" alt="Tecla de Cambio de Personaje" width="100px" heigh="auto"/>
+    <img src="docs/multimedia/1.png" alt="Tecla Pantalla Completa" width="100px" heigh="auto"/>
+    <img src="docs/multimedia/Esc.png" alt="Tecla Salir" width="100px" heigh="auto"/>
+    <img src="docs/multimedia/SpaceBar.png" alt="Tecla Romper Cajas (Elefante)" width="200px" heigh="auto"/>
+  </div>
+</section>
+
 ## Como Utilizar
 
 El videojuego ha sido desarrollado enteramente en C++ y se ha utilizado la librería de gráficos **SDL2 - Simple DirectMedia Layer**.
