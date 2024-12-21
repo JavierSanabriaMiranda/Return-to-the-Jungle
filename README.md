@@ -1,8 +1,10 @@
-# Return to the Jungle
+<h1 align="center">Return to the Jungle</h1>
 
-> __ℹ️ **Repositorio para el desarrollo de un videojuego en C++ para la asignatura "Software de Entretenimiento y Videojuegos"**__
+<p align="center">ℹ️ Repositorio para el desarrollo de un videojuego en C++ para la asignatura "Software de Entretenimiento y Videojuegos"</p> 
 
-![Portada Return to the Jungle](docs/imagenes/Portada.jpg)
+<p align="center">
+  <img src="docs/imagenes/Portada.jpg" alt="Portada Return to the Jungle" />
+</p>
 
 ## Vídeo
 
