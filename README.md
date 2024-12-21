@@ -34,7 +34,7 @@ Cada nivel tendrá un personaje prefijado (necesario para poder completar dicho 
 
 ## Sprites
 
-Todos los sprites de personajes y enemigos han sido desarrollados a mano utilizando herramientas como Piskel
+Todos los sprites de personajes y enemigos han sido desarrollados a mano por @UO295340 utilizando herramientas como [Piskel](https://www.piskelapp.com/)
 
 ## Niveles
 
@@ -49,12 +49,6 @@ Los niveles se han desarrollado siguiendo un diseño basado en tiles que se repr
 | <p align="center"><img src="docs/multimedia/1.png" alt="Tecla Pantalla Completa" width="100px" heigh="auto"/></p>              | Redimensionar la pantalla del juego | 
 | <p align="center"><img src="docs/multimedia/Esc.png" alt="Tecla Salir" width="100px" heigh="auto"/></p>                        | Salir del juego                     |
 | <p align="center"><img src="docs/multimedia/SpaceBar.png" alt="Tecla Romper Cajas (Elefante)" width="200px" heigh="auto"/></p> | Romper cajas con el elefante        |
-
-
-
-
-
-
 
 ## Como Utilizar
 
