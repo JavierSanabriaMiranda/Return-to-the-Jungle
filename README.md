@@ -20,8 +20,8 @@ El objetivo de estos animales es pasar a través de la ciudad para poder volver 
 
 Cada uno de nuestros personajes dispone de una habilidad única que le permitirá completar el nivel o obtener ciertos coleccionables
 
-| Personaje | Habilidad                                                            | Sprite                                                                                    |
-| ---       | ---                                                                  | ---                                                                                       |
+| Personaje | Habilidad                                                            | Sprite                                                                                      |
+| ---       | ---                                                                  | ---                                                                                         |
 | Mono      | Trepar por lianas                                                    | <img src="docs/multimedia/Mono.png" alt="Mono" style="width:200px; height:auto;">           |
 | Elefante  | Destrozar cajas con su trompa                                        | <img src="docs/multimedia/Elefante.png" alt="Elefante" style="width:200px; height:auto;">   |
 | Serpiente | Reptar por huecos por los que el resto de personajes no podrán pasar | <img src="docs/multimedia/Serpiente.png" alt="Serpiente" style="width:200px; height:auto;"> |
@@ -40,17 +40,21 @@ Todos los sprites de personajes y enemigos han sido desarrollados a mano utiliza
 
 Los niveles se han desarrollado siguiendo un diseño basado en tiles que se representan como caracteres en ficheros de texto
 
-<section>
-  <h2>Controles</h2>
+## Controles
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: 0;">
-    <img src="docs/multimedia/WASD.png" alt="Teclas de Movimiento" width="200px" heigh="auto"/>
-    <img src="docs/multimedia/C.png" alt="Tecla de Cambio de Personaje" width="100px" heigh="auto"/>
-    <img src="docs/multimedia/1.png" alt="Tecla Pantalla Completa" width="100px" heigh="auto"/>
-    <img src="docs/multimedia/Esc.png" alt="Tecla Salir" width="100px" heigh="auto"/>
-    <img src="docs/multimedia/SpaceBar.png" alt="Tecla Romper Cajas (Elefante)" width="200px" heigh="auto"/>
-  </div>
-</section>
+| Teclas                                                                                                                         | Función                             |
+| ---                                                                                                                            | ---                                 | 
+| <p align="center"><img src="docs/multimedia/WASD.png" alt="Teclas de Movimiento" width="200px" heigh="auto" /></p>             | Desplazarse y saltar                | 
+| <p align="center"><img src="docs/multimedia/C.png" alt="Tecla de Cambio de Personaje" width="100px" heigh="auto"/></p>         | Cambiar de personaje                | 
+| <p align="center"><img src="docs/multimedia/1.png" alt="Tecla Pantalla Completa" width="100px" heigh="auto"/></p>              | Redimensionar la pantalla del juego | 
+| <p align="center"><img src="docs/multimedia/Esc.png" alt="Tecla Salir" width="100px" heigh="auto"/></p>                        | Salir del juego                     |
+| <p align="center"><img src="docs/multimedia/SpaceBar.png" alt="Tecla Romper Cajas (Elefante)" width="200px" heigh="auto"/></p> | Romper cajas con el elefante        |
+
+
+
+
+
+
 
 ## Como Utilizar
 
