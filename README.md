@@ -34,7 +34,7 @@ Cada nivel tendrá un personaje prefijado (necesario para poder completar dicho 
 
 ## Sprites
 
-Todos los sprites de personajes y enemigos han sido desarrollados a mano por @UO295340 utilizando herramientas como [Piskel](https://www.piskelapp.com/)
+Todos los sprites de personajes y enemigos han sido desarrollados a mano utilizando herramientas como [Piskel](https://www.piskelapp.com/)
 
 ## Niveles
 
