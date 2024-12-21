@@ -2,8 +2,11 @@
 
 > __ℹ️ **Repositorio para el desarrollo de un videojuego en C++ para la asignatura "Software de Entretenimiento y Videojuegos"**__
 
-[![Video Return to the Jungle](docs/imagenes/Portada.jpg)](https://www.youtube.com/watch?v=ZclGCPnKIRk)
-### [Mira un vídeo del juego en YouTube](https://www.youtube.com/watch?v=ZclGCPnKIRk)
+![Portada Return to the Jungle](docs/imagenes/Portada.jpg)
+
+## Vídeo
+
+https://github.com/user-attachments/assets/bcb6f4cd-9636-449c-8ff1-1d6ba8606789
 
 ## Concepto
 
