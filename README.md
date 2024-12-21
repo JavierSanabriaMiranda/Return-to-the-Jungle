@@ -3,7 +3,7 @@
 <p align="center">ℹ️ Repositorio para el desarrollo de un videojuego en C++ para la asignatura "Software de Entretenimiento y Videojuegos"</p> 
 
 <p align="center">
-  <img src="docs/imagenes/Portada.jpg" alt="Portada Return to the Jungle" />
+  <img src="docs/multimedia/Portada.jpg" alt="Portada Return to the Jungle" />
 </p>
 
 ## Vídeo
@@ -22,11 +22,11 @@ Cada uno de nuestros personajes dispone de una habilidad única que le permitir�
 
 | Personaje | Habilidad                                                            | Sprite                                                                                    |
 | ---       | ---                                                                  | ---                                                                                       |
-| Mono      | Trepar por lianas                                                    | <img src="docs/imagenes/Mono.png" alt="Mono" style="width:200px; height:auto;">           |
-| Elefante  | Destrozar cajas con su trompa                                        | <img src="docs/imagenes/Elefante.png" alt="Elefante" style="width:200px; height:auto;">   |
-| Serpiente | Reptar por huecos por los que el resto de personajes no podrán pasar | <img src="docs/imagenes/Serpiente.png" alt="Serpiente" style="width:200px; height:auto;"> |
-| Tucán     | Doble salto                                                          | <img src="docs/imagenes/Tucan.png" alt="Tucan" style="width:200px; height:auto;">         |
-| Capibara  | Capacidad para nadar                                                 | <img src="docs/imagenes/Capibara.png" alt="Capibara" style="width:200px; height:auto;">   |
+| Mono      | Trepar por lianas                                                    | <img src="docs/multimedia/Mono.png" alt="Mono" style="width:200px; height:auto;">           |
+| Elefante  | Destrozar cajas con su trompa                                        | <img src="docs/multimedia/Elefante.png" alt="Elefante" style="width:200px; height:auto;">   |
+| Serpiente | Reptar por huecos por los que el resto de personajes no podrán pasar | <img src="docs/multimedia/Serpiente.png" alt="Serpiente" style="width:200px; height:auto;"> |
+| Tucán     | Doble salto                                                          | <img src="docs/multimedia/Tucan.png" alt="Tucan" style="width:200px; height:auto;">         |
+| Capibara  | Capacidad para nadar                                                 | <img src="docs/multimedia/Capibara.png" alt="Capibara" style="width:200px; height:auto;">   |
 
 Cada personaje, además de sus habilidades únicas, dispone de características diferentes en cuanto a velocidad y capacidad de salto
 
@@ -46,8 +46,8 @@ El videojuego ha sido desarrollado enteramente en C++ y se ha utilizado la libre
 
 Para poder iniciar el juego se requiere que las librerías se ubiquen en una carpeta C:/videojuegos de la siguiente manera:
 
-![LibreriasEnCarpeta.png](docs/imagenes/librerias-carpeta-videojuegos.png)
+![LibreriasEnCarpeta.png](docs/multimedia/librerias-carpeta-videojuegos.png)
 
 El juego se inicia en Visual Studio de Microsoft configurando su inicio en `x86`
 
-![Configuracionx86.png](docs/imagenes/x86-vs.png)
+![Configuracionx86.png](docs/multimedia/x86-vs.png)
