@@ -52,12 +52,8 @@ Los niveles se han desarrollado siguiendo un diseño basado en tiles que se repr
 
 ## Como Utilizar
 
-El videojuego ha sido desarrollado enteramente en C++ y se ha utilizado la librería de gráficos **SDL2 - Simple DirectMedia Layer**.
+El videojuego ha sido desarrollado enteramente en C++ y se ha utilizado la librería de gráficos **SDL2 - Simple DirectMedia Layer**, includia en el propio repositorio ([docs/librerias](docs/librerias)).
 
-Para poder iniciar el juego se requiere que las librerías se ubiquen en una carpeta C:/videojuegos de la siguiente manera:
-
-![LibreriasEnCarpeta.png](docs/multimedia/librerias-carpeta-videojuegos.png)
-
-El juego se inicia en Visual Studio de Microsoft configurando su inicio en `x86`
+Para poder iniciar el juego se ha de utilizar el IDE Visual Studio y configurar su inicio en `x86`
 
 ![Configuracionx86.png](docs/multimedia/x86-vs.png)
