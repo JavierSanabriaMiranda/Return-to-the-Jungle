@@ -18,7 +18,7 @@ El objetivo de estos animales es pasar a través de la ciudad para poder volver 
 
 ## Personajes
 
-Cada uno de nuestros personajes dispone de una habilidad única que le permitirá completar el nivel o obtener ciertos coleccionables
+Cada uno de nuestros personajes dispone de una habilidad única que le permitirá completar el nivel u obtener ciertos coleccionables
 
 | Personaje | Habilidad                                                            | Sprite                                                                                      |
 | ---       | ---                                                                  | ---                                                                                         |
